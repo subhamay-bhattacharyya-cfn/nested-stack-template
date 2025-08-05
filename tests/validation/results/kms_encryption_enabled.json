@@ -1,0 +1,1335 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Comprehensive S3 bucket CloudFormation template for nested stack deployment with extensive configuration options including lifecycle management, encryption, notifications, and access policies.",
+  "Metadata": {
+    "AWS::CloudFormation::Interface": {
+      "ParameterGroups": [
+        {
+          "Label": {
+            "default": "Project and Environment Configuration"
+          },
+          "Parameters": [
+            "ProjectName",
+            "Environment"
+          ]
+        },
+        {
+          "Label": {
+            "default": "GitHub Integration Attributes"
+          },
+          "Parameters": [
+            "GitHubOrg",
+            "GitHubRepo",
+            "CiBuild"
+          ]
+        },
+        {
+          "Label": {
+            "default": "KMS Encryption Configuration"
+          },
+          "Parameters": [
+            "KmsMasterKeyArn"
+          ]
+        },
+        {
+          "Label": {
+            "default": "S3 Bucket Configuration"
+          },
+          "Parameters": [
+            "S3BucketBaseName",
+            "BucketVersioningEnabled",
+            "BlockPublicAcls",
+            "BlockPublicPolicy",
+            "IgnorePublicAcls",
+            "RestrictPublicBuckets",
+            "S3VpcEndpointId"
+          ]
+        },
+        {
+          "Label": {
+            "default": "Lifecycle Management Configuration"
+          },
+          "Parameters": [
+            "S3LifecycleConfigurationEnabled",
+            "TransitionPrefix",
+            "TransitionToStandardIAEnabled",
+            "TransitionToStandardIADays",
+            "TransitionToIntelligentTieringEnabled",
+            "TransitionToIntelligentTieringDays",
+            "TransitionToOneZoneIAEnabled",
+            "TransitionToOneZoneIADays",
+            "TransitionToGlacierIREnabled",
+            "TransitionToGlacierIRDays",
+            "TransitionToGlacierEnabled",
+            "TransitionToGlacierDays",
+            "TransitionToDeepArchiveEnabled",
+            "TransitionToDeepArchiveDays",
+            "EnableExpiration",
+            "ExpirationDays"
+          ]
+        },
+        {
+          "Label": {
+            "default": "Event Notification Configuration"
+          },
+          "Parameters": [
+            "LambdaFunctionArn",
+            "NotificationEvents",
+            "Prefix",
+            "Suffix"
+          ]
+        },
+        {
+          "Label": {
+            "default": "Security and Access Policy Configuration"
+          },
+          "Parameters": [
+            "IAMRoleBaseName",
+            "WhitelistedUserId",
+            "WhitelistedRoleId"
+          ]
+        }
+      ],
+      "ParameterLabels": {
+        "ProjectName": {
+          "default": "Project Name"
+        },
+        "Environment": {
+          "default": "Environment"
+        },
+        "GitHubOrg": {
+          "default": "GitHub Organization"
+        },
+        "GitHubRepo": {
+          "default": "GitHub Repository"
+        },
+        "CiBuild": {
+          "default": "CI Build Number"
+        },
+        "KmsMasterKeyArn": {
+          "default": "KMS Master Key ARN"
+        },
+        "S3BucketBaseName": {
+          "default": "S3 Bucket Base Name"
+        },
+        "BucketVersioningEnabled": {
+          "default": "Enable Bucket Versioning"
+        },
+        "BlockPublicAcls": {
+          "default": "Block Public ACLs"
+        },
+        "BlockPublicPolicy": {
+          "default": "Block Public Policy"
+        },
+        "IgnorePublicAcls": {
+          "default": "Ignore Public ACLs"
+        },
+        "RestrictPublicBuckets": {
+          "default": "Restrict Public Buckets"
+        },
+        "S3VpcEndpointId": {
+          "default": "S3 VPC Endpoint ID"
+        },
+        "S3LifecycleConfigurationEnabled": {
+          "default": "Enable Lifecycle Configuration"
+        },
+        "TransitionPrefix": {
+          "default": "Lifecycle Transition Prefix"
+        },
+        "TransitionToStandardIAEnabled": {
+          "default": "Enable Standard-IA Transition"
+        },
+        "TransitionToStandardIADays": {
+          "default": "Days to Standard-IA Transition"
+        },
+        "TransitionToIntelligentTieringEnabled": {
+          "default": "Enable Intelligent Tiering Transition"
+        },
+        "TransitionToIntelligentTieringDays": {
+          "default": "Days to Intelligent Tiering Transition"
+        },
+        "TransitionToOneZoneIAEnabled": {
+          "default": "Enable One Zone-IA Transition"
+        },
+        "TransitionToOneZoneIADays": {
+          "default": "Days to One Zone-IA Transition"
+        },
+        "TransitionToGlacierIREnabled": {
+          "default": "Enable Glacier IR Transition"
+        },
+        "TransitionToGlacierIRDays": {
+          "default": "Days to Glacier IR Transition"
+        },
+        "TransitionToGlacierEnabled": {
+          "default": "Enable Glacier Transition"
+        },
+        "TransitionToGlacierDays": {
+          "default": "Days to Glacier Transition"
+        },
+        "TransitionToDeepArchiveEnabled": {
+          "default": "Enable Deep Archive Transition"
+        },
+        "TransitionToDeepArchiveDays": {
+          "default": "Days to Deep Archive Transition"
+        },
+        "EnableExpiration": {
+          "default": "Enable Object Expiration"
+        },
+        "ExpirationDays": {
+          "default": "Object Expiration Days"
+        },
+        "LambdaFunctionArn": {
+          "default": "Lambda Function ARN"
+        },
+        "NotificationEvents": {
+          "default": "Notification Events"
+        },
+        "Prefix": {
+          "default": "Notification Prefix Filter"
+        },
+        "Suffix": {
+          "default": "Notification Suffix Filter"
+        },
+        "IAMRoleBaseName": {
+          "default": "IAM Role Base Name"
+        },
+        "WhitelistedUserId": {
+          "default": "Whitelisted User ID"
+        },
+        "WhitelistedRoleId": {
+          "default": "Whitelisted Role ID"
+        }
+      }
+    },
+    "Template": {
+      "Name": "S3 Bucket Nested Stack Template",
+      "Version": "1.0.0",
+      "Description": "Comprehensive S3 bucket template with lifecycle management, encryption, notifications, and security policies",
+      "Author": "DevOps Team",
+      "CreatedDate": "2025-01-08",
+      "LastModified": "2025-01-08",
+      "Purpose": "Reusable nested stack component for S3 bucket deployment across environments",
+      "Features": [
+        "KMS encryption support",
+        "Comprehensive lifecycle management",
+        "Event notifications (Lambda, SNS, SQS)",
+        "Advanced security policies",
+        "VPC endpoint restrictions",
+        "Cross-account access prevention",
+        "Automated resource tagging"
+      ]
+    }
+  },
+  "Parameters": {
+    "ProjectName": {
+      "Type": "String",
+      "Description": "Name of the project or application. Used for resource naming and tagging. Must be lowercase alphanumeric with hyphens only.",
+      "AllowedPattern": "^[a-z0-9-]+$",
+      "MinLength": 5,
+      "MaxLength": 30,
+      "ConstraintDescription": "Project name must be 5-30 characters long and contain only lowercase letters, numbers, and hyphens.",
+      "Default": "integration-test"
+    },
+    "Environment": {
+      "Type": "String",
+      "Description": "Deployment environment for the S3 bucket. Used for resource naming, tagging, and environment-specific configurations.",
+      "AllowedValues": [
+        "devl",
+        "test",
+        "prod"
+      ],
+      "ConstraintDescription": "Environment must be one of: devl (development), test (testing), or prod (production).",
+      "Default": "prod"
+    },
+    "GitHubOrg": {
+      "Type": "String",
+      "Description": "GitHub organization name for source control integration and resource tagging.",
+      "Default": "",
+      "AllowedPattern": "^[a-zA-Z0-9-]*$",
+      "MaxLength": 50,
+      "ConstraintDescription": "GitHub organization must contain only alphanumeric characters and hyphens, maximum 50 characters."
+    },
+    "GitHubRepo": {
+      "Type": "String",
+      "Description": "GitHub repository name for source control integration and resource tagging.",
+      "Default": "",
+      "AllowedPattern": "^[a-zA-Z0-9-_.]*$",
+      "MaxLength": 100,
+      "ConstraintDescription": "GitHub repository must contain only alphanumeric characters, hyphens, underscores, and dots, maximum 100 characters."
+    },
+    "CiBuild": {
+      "Type": "String",
+      "Description": "CI/CD build number or identifier for deployment tracking and resource tagging.",
+      "Default": "",
+      "AllowedPattern": "^[a-zA-Z0-9-_.]*$",
+      "MaxLength": 50,
+      "ConstraintDescription": "CI build identifier must contain only alphanumeric characters, hyphens, underscores, and dots, maximum 50 characters."
+    },
+    "KmsMasterKeyArn": {
+      "Type": "String",
+      "Description": "ARN of the KMS master key for S3 bucket encryption. Leave empty to disable KMS encryption. When provided, enables server-side encryption with customer-managed KMS key.",
+      "Default": "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012",
+      "AllowedPattern": "^$|^arn:(aws[a-zA-Z-]*)?:kms:[a-z0-9-]+:\\d{12}:key\\/[a-f0-9-]{36}$",
+      "ConstraintDescription": "KMS Master Key ARN must be a valid AWS KMS key ARN format or empty string. Example: arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012"
+    },
+    "S3BucketBaseName": {
+      "Type": "String",
+      "Description": "Base name for the S3 bucket. Final bucket name will be: {ProjectName}-{S3BucketBaseName}-{Environment}-{Region}{CiBuild}. Must follow S3 bucket naming conventions.",
+      "AllowedPattern": "^[a-z0-9.-]{3,20}$",
+      "MinLength": 3,
+      "MaxLength": 20,
+      "ConstraintDescription": "S3 bucket base name must be 3-20 characters long and contain only lowercase letters, numbers, dots, and hyphens. Must follow S3 bucket naming conventions.",
+      "Default": "encrypted-bucket"
+    },
+    "BucketVersioningEnabled": {
+      "Type": "String",
+      "Description": "Enable versioning for the S3 bucket. When enabled, multiple versions of objects can be stored and retrieved.",
+      "Default": "true",
+      "AllowedValues": [
+        "true",
+        "false"
+      ],
+      "ConstraintDescription": "Bucket versioning must be either true or false."
+    },
+    "BlockPublicAcls": {
+      "Type": "String",
+      "Description": "Block public access granted through new access control lists (ACLs). Recommended: true for security.",
+      "Default": "true",
+      "AllowedValues": [
+        "true",
+        "false"
+      ],
+      "ConstraintDescription": "Block Public ACLs must be either true or false."
+    },
+    "BlockPublicPolicy": {
+      "Type": "String",
+      "Description": "Block public access granted through bucket policies. Recommended: true for security.",
+      "Default": "true",
+      "AllowedValues": [
+        "true",
+        "false"
+      ],
+      "ConstraintDescription": "Block Public Policy must be either true or false."
+    },
+    "IgnorePublicAcls": {
+      "Type": "String",
+      "Description": "Ignore public access granted through existing access control lists (ACLs). Recommended: true for security.",
+      "Default": "true",
+      "AllowedValues": [
+        "true",
+        "false"
+      ],
+      "ConstraintDescription": "Ignore Public ACLs must be either true or false."
+    },
+    "RestrictPublicBuckets": {
+      "Type": "String",
+      "Description": "Restrict public bucket policies. Only AWS services and authorized users can access buckets with public policies. Recommended: true for security.",
+      "Default": "true",
+      "AllowedValues": [
+        "true",
+        "false"
+      ],
+      "ConstraintDescription": "Restrict Public Buckets must be either true or false."
+    },
+    "S3VpcEndpointId": {
+      "Type": "String",
+      "Description": "VPC Endpoint ID for S3 access restriction. When provided, bucket access will be restricted to this VPC endpoint only. Leave empty to allow access from anywhere.",
+      "Default": "",
+      "AllowedPattern": "^$|^vpce-[a-f0-9]{8,17}$",
+      "ConstraintDescription": "S3 VPC Endpoint ID must be a valid VPC endpoint ID format (vpce-xxxxxxxx) or empty string."
+    },
+    "S3LifecycleConfigurationEnabled": {
+      "Type": "String",
+      "Description": "Master toggle to enable lifecycle configuration for the S3 bucket. When enabled, allows automatic transitions between storage classes and object expiration.",
+      "Default": "false",
+      "AllowedValues": [
+        "true",
+        "false"
+      ],
+      "ConstraintDescription": "S3 Lifecycle Configuration must be either true or false."
+    },
+    "TransitionPrefix": {
+      "Type": "String",
+      "Description": "Object key prefix for lifecycle rule targeting. Only objects with keys that begin with this prefix will be affected by lifecycle rules. Leave empty to apply to all objects.",
+      "Default": "",
+      "AllowedPattern": "^[a-zA-Z0-9!_.*()\\'/-]*$",
+      "MaxLength": 1024,
+      "ConstraintDescription": "Transition prefix must contain only valid S3 object key characters and be maximum 1024 characters long."
+    },
+    "TransitionToStandardIAEnabled": {
+      "Type": "String",
+      "Description": "Enable automatic transition to Standard-IA storage class. Standard-IA is ideal for data that is accessed less frequently but requires rapid access when needed.",
+      "Default": "false",
+      "AllowedValues": [
+        "true",
+        "false"
+      ],
+      "ConstraintDescription": "Transition to Standard-IA must be either true or false."
+    },
+    "TransitionToStandardIADays": {
+      "Type": "Number",
+      "Description": "Number of days after object creation to transition to Standard-IA storage class. Must be at least 30 days.",
+      "Default": 30,
+      "MinValue": 30,
+      "MaxValue": 185,
+      "ConstraintDescription": "Transition to Standard-IA days must be between 30 and 185 days."
+    },
+    "TransitionToIntelligentTieringEnabled": {
+      "Type": "String",
+      "Description": "Enable automatic transition to Intelligent Tiering storage class. Automatically moves objects between frequent and infrequent access tiers based on access patterns.",
+      "Default": "false",
+      "AllowedValues": [
+        "true",
+        "false"
+      ],
+      "ConstraintDescription": "Transition to Intelligent Tiering must be either true or false."
+    },
+    "TransitionToIntelligentTieringDays": {
+      "Type": "Number",
+      "Description": "Number of days after object creation to transition to Intelligent Tiering storage class. Must be at least 60 days.",
+      "Default": 60,
+      "MinValue": 60,
+      "MaxValue": 365,
+      "ConstraintDescription": "Transition to Intelligent Tiering days must be between 60 and 365 days."
+    },
+    "TransitionToOneZoneIAEnabled": {
+      "Type": "String",
+      "Description": "Enable automatic transition to One Zone-IA storage class. Lower-cost option for infrequently accessed data that does not require multiple Availability Zone resilience.",
+      "Default": "false",
+      "AllowedValues": [
+        "true",
+        "false"
+      ],
+      "ConstraintDescription": "Transition to One Zone-IA must be either true or false."
+    },
+    "TransitionToOneZoneIADays": {
+      "Type": "Number",
+      "Description": "Number of days after object creation to transition to One Zone-IA storage class. Must be at least 90 days.",
+      "Default": 90,
+      "MinValue": 90,
+      "MaxValue": 365,
+      "ConstraintDescription": "Transition to One Zone-IA days must be between 90 and 365 days."
+    },
+    "TransitionToGlacierIREnabled": {
+      "Type": "String",
+      "Description": "Enable automatic transition to Glacier Instant Retrieval storage class. Archive storage with millisecond retrieval for rarely accessed data.",
+      "Default": "false",
+      "AllowedValues": [
+        "true",
+        "false"
+      ],
+      "ConstraintDescription": "Transition to Glacier IR must be either true or false."
+    },
+    "TransitionToGlacierIRDays": {
+      "Type": "Number",
+      "Description": "Number of days after object creation to transition to Glacier Instant Retrieval storage class. Must be at least 120 days.",
+      "Default": 120,
+      "MinValue": 120,
+      "MaxValue": 365,
+      "ConstraintDescription": "Transition to Glacier IR days must be between 120 and 365 days."
+    },
+    "TransitionToGlacierEnabled": {
+      "Type": "String",
+      "Description": "Enable automatic transition to Glacier Flexible Retrieval storage class. Low-cost archive storage with retrieval times from minutes to hours.",
+      "Default": "false",
+      "AllowedValues": [
+        "true",
+        "false"
+      ],
+      "ConstraintDescription": "Transition to Glacier must be either true or false."
+    },
+    "TransitionToGlacierDays": {
+      "Type": "Number",
+      "Description": "Number of days after object creation to transition to Glacier Flexible Retrieval storage class. Must be at least 60 days.",
+      "Default": 180,
+      "MinValue": 60,
+      "MaxValue": 500,
+      "ConstraintDescription": "Transition to Glacier days must be between 60 and 500 days."
+    },
+    "TransitionToDeepArchiveEnabled": {
+      "Type": "String",
+      "Description": "Enable automatic transition to Deep Archive storage class. Lowest-cost storage for long-term retention with 12-hour retrieval time.",
+      "Default": "false",
+      "AllowedValues": [
+        "true",
+        "false"
+      ],
+      "ConstraintDescription": "Transition to Deep Archive must be either true or false."
+    },
+    "TransitionToDeepArchiveDays": {
+      "Type": "Number",
+      "Description": "Number of days after object creation to transition to Deep Archive storage class. Must be at least 365 days.",
+      "Default": 365,
+      "MinValue": 365,
+      "MaxValue": 500,
+      "ConstraintDescription": "Transition to Deep Archive days must be between 365 and 500 days."
+    },
+    "EnableExpiration": {
+      "Type": "String",
+      "Description": "Enable automatic object expiration. When enabled, objects will be permanently deleted after the specified number of days.",
+      "Default": "false",
+      "AllowedValues": [
+        "true",
+        "false"
+      ],
+      "ConstraintDescription": "Enable Expiration must be either true or false."
+    },
+    "ExpirationDays": {
+      "Type": "Number",
+      "Description": "Number of days after object creation to permanently delete objects. Only applies when EnableExpiration is true.",
+      "Default": 365,
+      "MinValue": 30,
+      "MaxValue": 3650,
+      "ConstraintDescription": "Expiration days must be between 30 and 3650 days (10 years)."
+    },
+    "LambdaFunctionArn": {
+      "Type": "String",
+      "Description": "ARN of the Lambda function to receive S3 event notifications. Leave empty to disable Lambda notifications.",
+      "Default": "",
+      "AllowedPattern": "^$|^arn:(aws[a-zA-Z-]*)?:lambda:[a-z0-9-]+:\\d{12}:function:[a-zA-Z0-9-_]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?$",
+      "ConstraintDescription": "Lambda Function ARN must be a valid AWS Lambda function ARN format or empty string."
+    },
+    "NotificationEvents": {
+      "Type": "CommaDelimitedList",
+      "Description": "Comma-delimited list of S3 events that will trigger notifications. Common events: s3:ObjectCreated:*, s3:ObjectRemoved:*",
+      "Default": "s3:ObjectCreated:*"
+    },
+    "Prefix": {
+      "Type": "String",
+      "Description": "Object key prefix filter for event notifications. Only objects with keys that begin with this prefix will trigger notifications.",
+      "Default": "",
+      "AllowedPattern": "^[a-zA-Z0-9!_.*()\\'/-]*$",
+      "MaxLength": 1024,
+      "ConstraintDescription": "Notification prefix must contain only valid S3 object key characters and be maximum 1024 characters long."
+    },
+    "Suffix": {
+      "Type": "String",
+      "Description": "Object key suffix filter for event notifications. Only objects with keys that end with this suffix will trigger notifications.",
+      "Default": "",
+      "AllowedPattern": "^[a-zA-Z0-9!_.*()\\'/-]*$",
+      "MaxLength": 1024,
+      "ConstraintDescription": "Notification suffix must contain only valid S3 object key characters and be maximum 1024 characters long."
+    },
+    "IAMRoleBaseName": {
+      "Type": "String",
+      "Description": "Base name for IAM role that will have access to the S3 bucket. Leave empty to disable IAM role access policy.",
+      "Default": "",
+      "AllowedPattern": "^[a-zA-Z0-9+=,.@_-]*$",
+      "MaxLength": 64,
+      "ConstraintDescription": "IAM Role base name must contain only valid IAM role name characters and be maximum 64 characters long."
+    },
+    "WhitelistedUserId": {
+      "Type": "String",
+      "Description": "AWS user ID to whitelist for bucket access. Leave empty to disable user-specific access policy.",
+      "Default": "",
+      "AllowedPattern": "^$|^[A-Z0-9]{21}$",
+      "ConstraintDescription": "Whitelisted User ID must be a valid AWS user ID (21 uppercase alphanumeric characters) or empty string."
+    },
+    "WhitelistedRoleId": {
+      "Type": "String",
+      "Description": "AWS role ID to whitelist for bucket access. Leave empty to disable role-specific access policy.",
+      "Default": "",
+      "AllowedPattern": "^$|^[A-Z0-9]{21}$",
+      "ConstraintDescription": "Whitelisted Role ID must be a valid AWS role ID (21 uppercase alphanumeric characters) or empty string."
+    }
+  },
+  "Conditions": {
+    "EnableKMSEncryption": {
+      "Fn::": [
+        {
+          "Fn::": [
+            {
+              "Fn::": "KmsMasterKeyArn"
+            },
+            ""
+          ]
+        }
+      ]
+    },
+    "S3LifecycleConfigurationEnabled": {
+      "Fn::": [
+        {
+          "Fn::": "S3LifecycleConfigurationEnabled"
+        },
+        "true"
+      ]
+    },
+    "TransitionToStandardIAEnabled": {
+      "Fn::": [
+        {
+          "Fn::": "S3LifecycleConfigurationEnabled"
+        },
+        {
+          "Fn::": [
+            {
+              "Fn::": "TransitionToStandardIAEnabled"
+            },
+            "true"
+          ]
+        }
+      ]
+    },
+    "TransitionToIntelligentTieringEnabled": {
+      "Fn::": [
+        {
+          "Fn::": "S3LifecycleConfigurationEnabled"
+        },
+        {
+          "Fn::": [
+            {
+              "Fn::": "TransitionToIntelligentTieringEnabled"
+            },
+            "true"
+          ]
+        }
+      ]
+    },
+    "TransitionToOneZoneIAEnabled": {
+      "Fn::": [
+        {
+          "Fn::": "S3LifecycleConfigurationEnabled"
+        },
+        {
+          "Fn::": [
+            {
+              "Fn::": "TransitionToOneZoneIAEnabled"
+            },
+            "true"
+          ]
+        }
+      ]
+    },
+    "TransitionToGlacierIREnabled": {
+      "Fn::": [
+        {
+          "Fn::": "S3LifecycleConfigurationEnabled"
+        },
+        {
+          "Fn::": [
+            {
+              "Fn::": "TransitionToGlacierIREnabled"
+            },
+            "true"
+          ]
+        }
+      ]
+    },
+    "TransitionToGlacierEnabled": {
+      "Fn::": [
+        {
+          "Fn::": "S3LifecycleConfigurationEnabled"
+        },
+        {
+          "Fn::": [
+            {
+              "Fn::": "TransitionToGlacierEnabled"
+            },
+            "true"
+          ]
+        }
+      ]
+    },
+    "TransitionToDeepArchiveEnabled": {
+      "Fn::": [
+        {
+          "Fn::": "S3LifecycleConfigurationEnabled"
+        },
+        {
+          "Fn::": [
+            {
+              "Fn::": "TransitionToDeepArchiveEnabled"
+            },
+            "true"
+          ]
+        }
+      ]
+    },
+    "ExpirationEnabled": {
+      "Fn::": [
+        {
+          "Fn::": "S3LifecycleConfigurationEnabled"
+        },
+        {
+          "Fn::": [
+            {
+              "Fn::": "EnableExpiration"
+            },
+            "true"
+          ]
+        }
+      ]
+    },
+    "BucketVersioningEnabled": {
+      "Fn::": [
+        {
+          "Fn::": "BucketVersioningEnabled"
+        },
+        "true"
+      ]
+    },
+    "LambdaEventNotifyConfigEnabled": {
+      "Fn::": [
+        {
+          "Fn::": [
+            {
+              "Fn::": "LambdaFunctionArn"
+            },
+            ""
+          ]
+        }
+      ]
+    },
+    "HasNotificationPrefix": {
+      "Fn::": [
+        {
+          "Fn::": [
+            {
+              "Fn::": "Prefix"
+            },
+            ""
+          ]
+        }
+      ]
+    },
+    "HasNotificationSuffix": {
+      "Fn::": [
+        {
+          "Fn::": [
+            {
+              "Fn::": "Suffix"
+            },
+            ""
+          ]
+        }
+      ]
+    },
+    "HasNotificationFilters": {
+      "Fn::": [
+        {
+          "Fn::": "HasNotificationPrefix"
+        },
+        {
+          "Fn::": "HasNotificationSuffix"
+        }
+      ]
+    },
+    "HasVpcEndpointRestriction": {
+      "Fn::": [
+        {
+          "Fn::": [
+            {
+              "Fn::": "S3VpcEndpointId"
+            },
+            ""
+          ]
+        }
+      ]
+    },
+    "HasWhitelistedUserId": {
+      "Fn::": [
+        {
+          "Fn::": [
+            {
+              "Fn::": "WhitelistedUserId"
+            },
+            ""
+          ]
+        }
+      ]
+    },
+    "HasWhitelistedRoleId": {
+      "Fn::": [
+        {
+          "Fn::": [
+            {
+              "Fn::": "WhitelistedRoleId"
+            },
+            ""
+          ]
+        }
+      ]
+    },
+    "HasIAMRoleAccess": {
+      "Fn::": [
+        {
+          "Fn::": [
+            {
+              "Fn::": "IAMRoleBaseName"
+            },
+            ""
+          ]
+        }
+      ]
+    }
+  },
+  "Resources": {
+    "S3Bucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": {
+          "Fn::": [
+            "${ProjectName}-${S3BucketBaseName}-${Environment}-${AWS::Region}${CiBuildSuffix}",
+            {
+              "CiBuildSuffix": {
+                "Fn::": [
+                  {
+                    "Fn::": [
+                      {
+                        "Fn::": [
+                          {
+                            "Fn::": "CiBuild"
+                          },
+                          ""
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Fn::": "-${CiBuild}"
+                  },
+                  ""
+                ]
+              }
+            }
+          ]
+        },
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": {
+            "Fn::": "BlockPublicAcls"
+          },
+          "BlockPublicPolicy": {
+            "Fn::": "BlockPublicPolicy"
+          },
+          "IgnorePublicAcls": {
+            "Fn::": "IgnorePublicAcls"
+          },
+          "RestrictPublicBuckets": {
+            "Fn::": "RestrictPublicBuckets"
+          }
+        },
+        "VersioningConfiguration": {
+          "Fn::": [
+            "BucketVersioningEnabled",
+            {
+              "Status": "Enabled"
+            },
+            {
+              "Fn::": "AWS::NoValue"
+            }
+          ]
+        },
+        "BucketEncryption": {
+          "Fn::": [
+            "EnableKMSEncryption",
+            {
+              "ServerSideEncryptionConfiguration": [
+                {
+                  "ServerSideEncryptionByDefault": {
+                    "SSEAlgorithm": "aws:kms",
+                    "KMSMasterKeyID": {
+                      "Fn::": "KmsMasterKeyArn"
+                    }
+                  },
+                  "BucketKeyEnabled": true
+                }
+              ]
+            },
+            {
+              "Fn::": "AWS::NoValue"
+            }
+          ]
+        },
+        "LifecycleConfiguration": {
+          "Fn::": [
+            "S3LifecycleConfigurationEnabled",
+            {
+              "Rules": [
+                {
+                  "Id": "LifecycleRule",
+                  "Status": "Enabled",
+                  "Filter": {
+                    "Prefix": {
+                      "Fn::": "TransitionPrefix"
+                    }
+                  },
+                  "Transitions": [
+                    {
+                      "Fn::": [
+                        "TransitionToStandardIAEnabled",
+                        {
+                          "StorageClass": "STANDARD_IA",
+                          "TransitionInDays": {
+                            "Fn::": "TransitionToStandardIADays"
+                          }
+                        },
+                        {
+                          "Fn::": "AWS::NoValue"
+                        }
+                      ]
+                    },
+                    {
+                      "Fn::": [
+                        "TransitionToIntelligentTieringEnabled",
+                        {
+                          "StorageClass": "INTELLIGENT_TIERING",
+                          "TransitionInDays": {
+                            "Fn::": "TransitionToIntelligentTieringDays"
+                          }
+                        },
+                        {
+                          "Fn::": "AWS::NoValue"
+                        }
+                      ]
+                    },
+                    {
+                      "Fn::": [
+                        "TransitionToOneZoneIAEnabled",
+                        {
+                          "StorageClass": "ONEZONE_IA",
+                          "TransitionInDays": {
+                            "Fn::": "TransitionToOneZoneIADays"
+                          }
+                        },
+                        {
+                          "Fn::": "AWS::NoValue"
+                        }
+                      ]
+                    },
+                    {
+                      "Fn::": [
+                        "TransitionToGlacierIREnabled",
+                        {
+                          "StorageClass": "GLACIER_IR",
+                          "TransitionInDays": {
+                            "Fn::": "TransitionToGlacierIRDays"
+                          }
+                        },
+                        {
+                          "Fn::": "AWS::NoValue"
+                        }
+                      ]
+                    },
+                    {
+                      "Fn::": [
+                        "TransitionToGlacierEnabled",
+                        {
+                          "StorageClass": "GLACIER",
+                          "TransitionInDays": {
+                            "Fn::": "TransitionToGlacierDays"
+                          }
+                        },
+                        {
+                          "Fn::": "AWS::NoValue"
+                        }
+                      ]
+                    },
+                    {
+                      "Fn::": [
+                        "TransitionToDeepArchiveEnabled",
+                        {
+                          "StorageClass": "DEEP_ARCHIVE",
+                          "TransitionInDays": {
+                            "Fn::": "TransitionToDeepArchiveDays"
+                          }
+                        },
+                        {
+                          "Fn::": "AWS::NoValue"
+                        }
+                      ]
+                    }
+                  ],
+                  "ExpirationInDays": {
+                    "Fn::": [
+                      "ExpirationEnabled",
+                      {
+                        "Fn::": "ExpirationDays"
+                      },
+                      {
+                        "Fn::": "AWS::NoValue"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Fn::": "AWS::NoValue"
+            }
+          ]
+        },
+        "NotificationConfiguration": {
+          "Fn::": [
+            "LambdaEventNotifyConfigEnabled",
+            {
+              "LambdaConfigurations": [
+                {
+                  "Event": {
+                    "Fn::": [
+                      0,
+                      {
+                        "Fn::": "NotificationEvents"
+                      }
+                    ]
+                  },
+                  "Function": {
+                    "Fn::": "LambdaFunctionArn"
+                  },
+                  "Filter": {
+                    "Fn::": [
+                      "HasNotificationFilters",
+                      {
+                        "S3Key": {
+                          "Rules": [
+                            {
+                              "Fn::": [
+                                "HasNotificationPrefix",
+                                {
+                                  "Name": "prefix",
+                                  "Value": {
+                                    "Fn::": "Prefix"
+                                  }
+                                },
+                                {
+                                  "Fn::": "AWS::NoValue"
+                                }
+                              ]
+                            },
+                            {
+                              "Fn::": [
+                                "HasNotificationSuffix",
+                                {
+                                  "Name": "suffix",
+                                  "Value": {
+                                    "Fn::": "Suffix"
+                                  }
+                                },
+                                {
+                                  "Fn::": "AWS::NoValue"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "Fn::": "AWS::NoValue"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Fn::": "AWS::NoValue"
+            }
+          ]
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": {
+              "Fn::": [
+                "${ProjectName}-${S3BucketBaseName}-${Environment}-${AWS::Region}${CiBuildSuffix}",
+                {
+                  "CiBuildSuffix": {
+                    "Fn::": [
+                      {
+                        "Fn::": [
+                          {
+                            "Fn::": [
+                              {
+                                "Fn::": "CiBuild"
+                              },
+                              ""
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "Fn::": "-${CiBuild}"
+                      },
+                      ""
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Key": "Project",
+            "Value": {
+              "Fn::": "ProjectName"
+            }
+          },
+          {
+            "Key": "Environment",
+            "Value": {
+              "Fn::": "Environment"
+            }
+          },
+          {
+            "Key": "GitHubOrg",
+            "Value": {
+              "Fn::": "GitHubOrg"
+            }
+          },
+          {
+            "Key": "GitHubRepo",
+            "Value": {
+              "Fn::": "GitHubRepo"
+            }
+          },
+          {
+            "Key": "CiBuild",
+            "Value": {
+              "Fn::": "CiBuild"
+            }
+          },
+          {
+            "Key": "ManagedBy",
+            "Value": "CloudFormation"
+          },
+          {
+            "Key": "StackName",
+            "Value": {
+              "Fn::": "AWS::StackName"
+            }
+          },
+          {
+            "Key": "Region",
+            "Value": {
+              "Fn::": "AWS::Region"
+            }
+          },
+          {
+            "Key": "CreatedDate",
+            "Value": {
+              "Fn::": "${AWS::Timestamp}"
+            }
+          }
+        ]
+      }
+    },
+    "S3BucketPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "Bucket": {
+          "Fn::": "S3Bucket"
+        },
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Fn::": [
+                "EnableKMSEncryption",
+                {
+                  "Sid": "Deny-unless-SSE-KMS-KeyId",
+                  "Effect": "Deny",
+                  "Principal": "*",
+                  "Action": "s3:PutObject",
+                  "Resource": {
+                    "Fn::": "${S3Bucket}/*"
+                  },
+                  "Condition": {
+                    "StringNotEquals": {
+                      "s3:x-amz-server-side-encryption": "aws:kms",
+                      "s3:x-amz-server-side-encryption-aws-kms-key-id": {
+                        "Fn::": "KmsMasterKeyArn"
+                      }
+                    }
+                  }
+                },
+                {
+                  "Fn::": "AWS::NoValue"
+                }
+              ]
+            },
+            {
+              "Sid": "Enforce-InFlight-Object-Encryption",
+              "Effect": "Deny",
+              "Principal": "*",
+              "Action": "s3:*",
+              "Resource": [
+                {
+                  "Fn::": "${S3Bucket}/*"
+                },
+                {
+                  "Fn::": "${S3Bucket}"
+                }
+              ],
+              "Condition": {
+                "Bool": {
+                  "aws:SecureTransport": "false"
+                }
+              }
+            },
+            {
+              "Fn::": [
+                "HasVpcEndpointRestriction",
+                {
+                  "Sid": "Access-to-specific-VPC-only",
+                  "Effect": "Deny",
+                  "Principal": "*",
+                  "Action": "s3:*",
+                  "Resource": [
+                    {
+                      "Fn::": "${S3Bucket}/*"
+                    },
+                    {
+                      "Fn::": "${S3Bucket}"
+                    }
+                  ],
+                  "Condition": {
+                    "StringNotEquals": {
+                      "aws:sourceVpce": {
+                        "Fn::": "S3VpcEndpointId"
+                      }
+                    },
+                    "Bool": {
+                      "aws:ViaAWSService": "false"
+                    }
+                  }
+                },
+                {
+                  "Fn::": "AWS::NoValue"
+                }
+              ]
+            },
+            {
+              "Sid": "Access-to-Specific-Account",
+              "Effect": "Deny",
+              "Principal": "*",
+              "Action": "s3:*",
+              "Resource": [
+                {
+                  "Fn::": "${S3Bucket}/*"
+                },
+                {
+                  "Fn::": "${S3Bucket}"
+                }
+              ],
+              "Condition": {
+                "StringNotEquals": {
+                  "aws:PrincipalAccount": {
+                    "Fn::": "AWS::AccountId"
+                  }
+                },
+                "Bool": {
+                  "aws:ViaAWSService": "false"
+                }
+              }
+            },
+            {
+              "Fn::": [
+                "HasWhitelistedUserId",
+                {
+                  "Sid": "Allow-Whitelisted-User-Access",
+                  "Effect": "Allow",
+                  "Principal": "*",
+                  "Action": "s3:*",
+                  "Resource": [
+                    {
+                      "Fn::": "${S3Bucket}/*"
+                    },
+                    {
+                      "Fn::": "${S3Bucket}"
+                    }
+                  ],
+                  "Condition": {
+                    "StringEquals": {
+                      "aws:userid": {
+                        "Fn::": "WhitelistedUserId"
+                      }
+                    }
+                  }
+                },
+                {
+                  "Fn::": "AWS::NoValue"
+                }
+              ]
+            },
+            {
+              "Fn::": [
+                "HasWhitelistedRoleId",
+                {
+                  "Sid": "Allow-Whitelisted-Role-Access",
+                  "Effect": "Allow",
+                  "Principal": "*",
+                  "Action": "s3:*",
+                  "Resource": [
+                    {
+                      "Fn::": "${S3Bucket}/*"
+                    },
+                    {
+                      "Fn::": "${S3Bucket}"
+                    }
+                  ],
+                  "Condition": {
+                    "StringLike": {
+                      "aws:userid": {
+                        "Fn::": "${WhitelistedRoleId}:*"
+                      }
+                    }
+                  }
+                },
+                {
+                  "Fn::": "AWS::NoValue"
+                }
+              ]
+            },
+            {
+              "Fn::": [
+                "HasIAMRoleAccess",
+                {
+                  "Sid": "Allow-IAM-Role-Access",
+                  "Effect": "Allow",
+                  "Principal": {
+                    "AWS": {
+                      "Fn::": "arn:aws:iam::${AWS::AccountId}:role/${IAMRoleBaseName}"
+                    }
+                  },
+                  "Action": [
+                    "s3:GetObject",
+                    "s3:GetObjectVersion",
+                    "s3:PutObject",
+                    "s3:PutObjectAcl",
+                    "s3:DeleteObject",
+                    "s3:DeleteObjectVersion",
+                    "s3:ListBucket",
+                    "s3:ListBucketVersions",
+                    "s3:GetBucketLocation",
+                    "s3:GetBucketVersioning"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::": "${S3Bucket}"
+                    },
+                    {
+                      "Fn::": "${S3Bucket}/*"
+                    }
+                  ]
+                },
+                {
+                  "Fn::": "AWS::NoValue"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "S3BucketArn": {
+      "Description": "ARN of the created S3 bucket. This output can be used by parent stacks to reference the bucket for cross-stack integrations, IAM policies, and resource dependencies.",
+      "Value": {
+        "Fn::": "S3Bucket.Arn"
+      },
+      "Export": {
+        "Name": {
+          "Fn::": "${AWS::StackName}-S3BucketArn"
+        }
+      }
+    }
+  }
+}

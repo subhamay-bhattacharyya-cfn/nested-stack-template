@@ -1,0 +1,149 @@
+=== CloudFormation Template Validation Test Suite ===
+Started at: Tue Aug  5 17:32:20 EDT 2025
+Template: cfn/template.yaml
+
+[0;34mStarting test execution...[0m
+[0;34m=== Running Template Syntax Validation ===[0m
+=== CloudFormation Template Syntax Validation Tests ===
+Template: /Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml
+
+[1;33mTest 1: AWS CLI Template Validation[0m
+[0;31m✗ AWS CLI validation failed[0m
+
+An error occurred (InvalidClientTokenId) when calling the ValidateTemplate operation: The security token included in the request is invalid.
+[0;31m✗ Template Syntax Validation FAILED[0m
+
+[0;34m=== Running Parameter Validation Tests ===[0m
+Traceback (most recent call last):
+  File "/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/test-parameter-validation.py", line 343, in <module>
+    tester = ParameterValidationTester("cfn/template.yaml")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/test-parameter-validation.py", line 18, in __init__
+    self.template = yaml.safe_load(f)
+                    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/__init__.py", line 125, in safe_load
+    return load(stream, SafeLoader)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/__init__.py", line 81, in load
+    return loader.get_single_data()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 51, in get_single_data
+    return self.construct_document(node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 60, in construct_document
+    for dummy in generator:
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 413, in construct_yaml_map
+    value = self.construct_mapping(node)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 218, in construct_mapping
+    return super().construct_mapping(node, deep=deep)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 143, in construct_mapping
+    value = self.construct_object(value_node, deep=deep)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 100, in construct_object
+    data = constructor(self, node)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 427, in construct_undefined
+    raise ConstructorError(None, None,
+yaml.constructor.ConstructorError: could not determine a constructor for the tag '!Not'
+  in "cfn/template.yaml", line 468, column 24
+[0;31m✗ Parameter Validation Tests FAILED[0m
+
+[0;34m=== Running Conditional Logic Tests ===[0m
+Traceback (most recent call last):
+  File "/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/test-conditional-logic.py", line 357, in <module>
+    tester = ConditionalLogicTester("cfn/template.yaml")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/test-conditional-logic.py", line 17, in __init__
+    self.template = yaml.safe_load(f)
+                    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/__init__.py", line 125, in safe_load
+    return load(stream, SafeLoader)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/__init__.py", line 81, in load
+    return loader.get_single_data()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 51, in get_single_data
+    return self.construct_document(node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 60, in construct_document
+    for dummy in generator:
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 413, in construct_yaml_map
+    value = self.construct_mapping(node)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 218, in construct_mapping
+    return super().construct_mapping(node, deep=deep)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 143, in construct_mapping
+    value = self.construct_object(value_node, deep=deep)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 100, in construct_object
+    data = constructor(self, node)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 427, in construct_undefined
+    raise ConstructorError(None, None,
+yaml.constructor.ConstructorError: could not determine a constructor for the tag '!Not'
+  in "cfn/template.yaml", line 468, column 24
+[0;31m✗ Conditional Logic Tests FAILED[0m
+
+[0;34m=== Running Template Generation Tests ===[0m
+Traceback (most recent call last):
+  File "/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/test-template-generation.py", line 357, in <module>
+    tester = TemplateGenerationTester("cfn/template.yaml")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/test-template-generation.py", line 18, in __init__
+    self.template = yaml.safe_load(f)
+                    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/__init__.py", line 125, in safe_load
+    return load(stream, SafeLoader)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/__init__.py", line 81, in load
+    return loader.get_single_data()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 51, in get_single_data
+    return self.construct_document(node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 60, in construct_document
+    for dummy in generator:
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 413, in construct_yaml_map
+    value = self.construct_mapping(node)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 218, in construct_mapping
+    return super().construct_mapping(node, deep=deep)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 143, in construct_mapping
+    value = self.construct_object(value_node, deep=deep)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 100, in construct_object
+    data = constructor(self, node)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 427, in construct_undefined
+    raise ConstructorError(None, None,
+yaml.constructor.ConstructorError: could not determine a constructor for the tag '!Not'
+  in "cfn/template.yaml", line 468, column 24
+[0;31m✗ Template Generation Tests FAILED[0m
+
+=== FINAL TEST REPORT ===
+Completed at: Tue Aug  5 17:32:21 EDT 2025
+
+Test Suite Summary:
+  Total test suites: 4
+  Passed: 0
+  Failed: 4
+
+[0;31m❌ SOME TESTS FAILED! Please review the failures above.[0m
+
+Failed test suites: 4 out of 4
+Please review the detailed output above and fix any issues.
+
+Detailed test report saved to: /Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/results/test_report_20250805_173220.txt
+Test artifacts saved in: /Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/results
+
+Generated test artifacts:
+total 56
+drwxr-xr-x@ 5 subhamaybhattacharyya  staff   160 Aug  5 17:32 .
+drwxr-xr-x@ 9 subhamaybhattacharyya  staff   288 Aug  5 17:31 ..
+-rw-r--r--@ 1 subhamaybhattacharyya  staff   142 Aug  5 17:32 aws-cli-validation.json
+-rw-r--r--@ 1 subhamaybhattacharyya  staff  9495 Aug  5 17:31 test_report_20250805_173102.txt
+-rw-r--r--@ 1 subhamaybhattacharyya  staff  9177 Aug  5 17:32 test_report_20250805_173220.txt

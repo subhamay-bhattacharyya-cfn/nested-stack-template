@@ -1,0 +1,387 @@
+CloudFormation Template Integration Test Report
+==================================================
+Template: cfn/template.yaml
+Test Date: 2025-08-05 18:30:26
+Dry Run Mode: True
+Total Scenarios: 7
+Total Tests: 166
+Passed: 166
+Failed: 0
+
+Test Results:
+------------------------------
+[PASS] Minimal Configuration - Template syntax validation
+    Template is valid JSON (42306 bytes)
+[PASS] Minimal Configuration - Parameter constraints validation
+    All 3 parameters valid
+[PASS] Minimal Configuration - Resource 'S3Bucket' present
+[PASS] Minimal Configuration - Resource 'S3BucketPolicy' present
+[PASS] Minimal Configuration - KMS encryption logic
+    KMS key present: False, encryption expected: False
+[PASS] Minimal Configuration - Lifecycle logic
+    Lifecycle enabled: False, expected: False
+[PASS] Minimal Configuration - Notifications logic
+    Lambda ARN present: False, notifications expected: False
+[PASS] Minimal Configuration - VPC restriction logic
+    VPC endpoint present: False, restriction expected: False
+[PASS] Minimal Configuration - Bucket naming convention
+    Expected prefix: integration-test-minimal-bucket-devl-
+[PASS] Minimal Configuration - Lifecycle configuration (disabled)
+    Lifecycle not enabled for this scenario
+[PASS] Minimal Configuration - Policy statements exist
+    Found 7 policy statements
+[PASS] Minimal Configuration - HTTPS enforcement policy
+    Policy should deny non-HTTPS requests
+[PASS] Minimal Configuration - Event notifications (disabled)
+    Event notifications not configured for this scenario
+[PASS] Minimal Configuration - Required tag 'Name'
+[PASS] Minimal Configuration - Required tag 'Project'
+[PASS] Minimal Configuration - Required tag 'Environment'
+[PASS] Minimal Configuration - Required tag 'ManagedBy'
+[PASS] Minimal Configuration - S3BucketArn description
+[PASS] Minimal Configuration - S3BucketArn value
+[PASS] Minimal Configuration - S3BucketArn export name
+[PASS] Minimal Configuration - Template files saved
+    Saved to tests/validation/results/minimal_configuration.json and tests/validation/results/minimal_configuration.yaml
+[PASS] KMS Encryption Enabled - Template syntax validation
+    Template is valid JSON (42403 bytes)
+[PASS] KMS Encryption Enabled - Parameter constraints validation
+    All 5 parameters valid
+[PASS] KMS Encryption Enabled - Resource 'S3Bucket' present
+[PASS] KMS Encryption Enabled - Resource 'S3BucketPolicy' present
+[PASS] KMS Encryption Enabled - KMS encryption logic
+    KMS key present: True, encryption expected: True
+[PASS] KMS Encryption Enabled - Lifecycle logic
+    Lifecycle enabled: False, expected: False
+[PASS] KMS Encryption Enabled - Notifications logic
+    Lambda ARN present: False, notifications expected: False
+[PASS] KMS Encryption Enabled - VPC restriction logic
+    VPC endpoint present: False, restriction expected: False
+[PASS] KMS Encryption Enabled - Bucket naming convention
+    Expected prefix: integration-test-encrypted-bucket-prod-
+[PASS] KMS Encryption Enabled - Lifecycle configuration (disabled)
+    Lifecycle not enabled for this scenario
+[PASS] KMS Encryption Enabled - Policy statements exist
+    Found 7 policy statements
+[PASS] KMS Encryption Enabled - HTTPS enforcement policy
+    Policy should deny non-HTTPS requests
+[PASS] KMS Encryption Enabled - KMS encryption enforcement
+    Policy should enforce KMS encryption
+[PASS] KMS Encryption Enabled - Event notifications (disabled)
+    Event notifications not configured for this scenario
+[PASS] KMS Encryption Enabled - Required tag 'Name'
+[PASS] KMS Encryption Enabled - Required tag 'Project'
+[PASS] KMS Encryption Enabled - Required tag 'Environment'
+[PASS] KMS Encryption Enabled - Required tag 'ManagedBy'
+[PASS] KMS Encryption Enabled - S3BucketArn description
+[PASS] KMS Encryption Enabled - S3BucketArn value
+[PASS] KMS Encryption Enabled - S3BucketArn export name
+[PASS] KMS Encryption Enabled - Template files saved
+    Saved to tests/validation/results/kms_encryption_enabled.json and tests/validation/results/kms_encryption_enabled.yaml
+[PASS] Full Lifecycle Configuration - Template syntax validation
+    Template is valid JSON (42479 bytes)
+[PASS] Full Lifecycle Configuration - Parameter constraints validation
+    All 19 parameters valid
+[PASS] Full Lifecycle Configuration - Resource 'S3Bucket' present
+[PASS] Full Lifecycle Configuration - Resource 'S3BucketPolicy' present
+[PASS] Full Lifecycle Configuration - KMS encryption logic
+    KMS key present: False, encryption expected: False
+[PASS] Full Lifecycle Configuration - Lifecycle logic
+    Lifecycle enabled: True, expected: True
+[PASS] Full Lifecycle Configuration - Notifications logic
+    Lambda ARN present: False, notifications expected: False
+[PASS] Full Lifecycle Configuration - VPC restriction logic
+    VPC endpoint present: False, restriction expected: False
+[PASS] Full Lifecycle Configuration - Bucket naming convention
+    Expected prefix: integration-test-lifecycle-bucket-test-
+[PASS] Full Lifecycle Configuration - Standard-IA transition days
+    Valid days: 30
+[PASS] Full Lifecycle Configuration - Intelligent-Tiering transition days
+    Valid days: 60
+[PASS] Full Lifecycle Configuration - One Zone-IA transition days
+    Valid days: 90
+[PASS] Full Lifecycle Configuration - Glacier IR transition days
+    Valid days: 120
+[PASS] Full Lifecycle Configuration - Glacier transition days
+    Valid days: 180
+[PASS] Full Lifecycle Configuration - Deep Archive transition days
+    Valid days: 365
+[PASS] Full Lifecycle Configuration - Expiration configuration
+    Expiration after 2555 days
+[PASS] Full Lifecycle Configuration - Policy statements exist
+    Found 7 policy statements
+[PASS] Full Lifecycle Configuration - HTTPS enforcement policy
+    Policy should deny non-HTTPS requests
+[PASS] Full Lifecycle Configuration - Event notifications (disabled)
+    Event notifications not configured for this scenario
+[PASS] Full Lifecycle Configuration - Required tag 'Name'
+[PASS] Full Lifecycle Configuration - Required tag 'Project'
+[PASS] Full Lifecycle Configuration - Required tag 'Environment'
+[PASS] Full Lifecycle Configuration - Required tag 'ManagedBy'
+[PASS] Full Lifecycle Configuration - S3BucketArn description
+[PASS] Full Lifecycle Configuration - S3BucketArn value
+[PASS] Full Lifecycle Configuration - S3BucketArn export name
+[PASS] Full Lifecycle Configuration - Template files saved
+    Saved to tests/validation/results/full_lifecycle_configuration.json and tests/validation/results/full_lifecycle_configuration.yaml
+[PASS] Lambda Event Notifications - Template syntax validation
+    Template is valid JSON (42477 bytes)
+[PASS] Lambda Event Notifications - Parameter constraints validation
+    All 7 parameters valid
+[PASS] Lambda Event Notifications - Resource 'S3Bucket' present
+[PASS] Lambda Event Notifications - Resource 'S3BucketPolicy' present
+[PASS] Lambda Event Notifications - KMS encryption logic
+    KMS key present: False, encryption expected: False
+[PASS] Lambda Event Notifications - Lifecycle logic
+    Lifecycle enabled: False, expected: False
+[PASS] Lambda Event Notifications - Notifications logic
+    Lambda ARN present: True, notifications expected: True
+[PASS] Lambda Event Notifications - VPC restriction logic
+    VPC endpoint present: False, restriction expected: False
+[PASS] Lambda Event Notifications - Bucket naming convention
+    Expected prefix: integration-test-notify-bucket-devl-
+[PASS] Lambda Event Notifications - Lifecycle configuration (disabled)
+    Lifecycle not enabled for this scenario
+[PASS] Lambda Event Notifications - Policy statements exist
+    Found 7 policy statements
+[PASS] Lambda Event Notifications - HTTPS enforcement policy
+    Policy should deny non-HTTPS requests
+[PASS] Lambda Event Notifications - Notification event 's3:ObjectCreated:*'
+    Valid S3 event type
+[PASS] Lambda Event Notifications - Notification event 's3:ObjectRemoved:*'
+    Valid S3 event type
+[PASS] Lambda Event Notifications - Notification filters
+    Prefix: 'uploads/', Suffix: '.jpg'
+[PASS] Lambda Event Notifications - Required tag 'Name'
+[PASS] Lambda Event Notifications - Required tag 'Project'
+[PASS] Lambda Event Notifications - Required tag 'Environment'
+[PASS] Lambda Event Notifications - Required tag 'ManagedBy'
+[PASS] Lambda Event Notifications - S3BucketArn description
+[PASS] Lambda Event Notifications - S3BucketArn value
+[PASS] Lambda Event Notifications - S3BucketArn export name
+[PASS] Lambda Event Notifications - Template files saved
+    Saved to tests/validation/results/lambda_event_notifications.json and tests/validation/results/lambda_event_notifications.yaml
+[PASS] Security Configuration - Template syntax validation
+    Template is valid JSON (42593 bytes)
+[PASS] Security Configuration - Parameter constraints validation
+    All 7 parameters valid
+[PASS] Security Configuration - Resource 'S3Bucket' present
+[PASS] Security Configuration - Resource 'S3BucketPolicy' present
+[PASS] Security Configuration - KMS encryption logic
+    KMS key present: False, encryption expected: False
+[PASS] Security Configuration - Lifecycle logic
+    Lifecycle enabled: False, expected: False
+[PASS] Security Configuration - Notifications logic
+    Lambda ARN present: False, notifications expected: False
+[PASS] Security Configuration - VPC restriction logic
+    VPC endpoint present: True, restriction expected: True
+[PASS] Security Configuration - Bucket naming convention
+    Expected prefix: integration-test-secure-bucket-prod-
+[PASS] Security Configuration - Lifecycle configuration (disabled)
+    Lifecycle not enabled for this scenario
+[PASS] Security Configuration - Policy statements exist
+    Found 7 policy statements
+[PASS] Security Configuration - HTTPS enforcement policy
+    Policy should deny non-HTTPS requests
+[PASS] Security Configuration - VPC endpoint restriction
+    Policy should restrict access to VPC endpoint
+[PASS] Security Configuration - Event notifications (disabled)
+    Event notifications not configured for this scenario
+[PASS] Security Configuration - Required tag 'Name'
+[PASS] Security Configuration - Required tag 'Project'
+[PASS] Security Configuration - Required tag 'Environment'
+[PASS] Security Configuration - Required tag 'ManagedBy'
+[PASS] Security Configuration - S3BucketArn description
+[PASS] Security Configuration - S3BucketArn value
+[PASS] Security Configuration - S3BucketArn export name
+[PASS] Security Configuration - Template files saved
+    Saved to tests/validation/results/security_configuration.json and tests/validation/results/security_configuration.yaml
+[PASS] GitHub Integration - Template syntax validation
+    Template is valid JSON (42660 bytes)
+[PASS] GitHub Integration - Parameter constraints validation
+    All 6 parameters valid
+[PASS] GitHub Integration - Resource 'S3Bucket' present
+[PASS] GitHub Integration - Resource 'S3BucketPolicy' present
+[PASS] GitHub Integration - KMS encryption logic
+    KMS key present: False, encryption expected: False
+[PASS] GitHub Integration - Lifecycle logic
+    Lifecycle enabled: False, expected: False
+[PASS] GitHub Integration - Notifications logic
+    Lambda ARN present: False, notifications expected: False
+[PASS] GitHub Integration - VPC restriction logic
+    VPC endpoint present: False, restriction expected: False
+[PASS] GitHub Integration - Bucket naming convention
+    Expected prefix: integration-test-github-bucket-devl-
+[PASS] GitHub Integration - Lifecycle configuration (disabled)
+    Lifecycle not enabled for this scenario
+[PASS] GitHub Integration - Policy statements exist
+    Found 7 policy statements
+[PASS] GitHub Integration - HTTPS enforcement policy
+    Policy should deny non-HTTPS requests
+[PASS] GitHub Integration - Event notifications (disabled)
+    Event notifications not configured for this scenario
+[PASS] GitHub Integration - Required tag 'Name'
+[PASS] GitHub Integration - Required tag 'Project'
+[PASS] GitHub Integration - Required tag 'Environment'
+[PASS] GitHub Integration - Required tag 'ManagedBy'
+[PASS] GitHub Integration - GitHub tag 'GitHubOrg'
+[PASS] GitHub Integration - GitHub tag 'GitHubRepo'
+[PASS] GitHub Integration - S3BucketArn description
+[PASS] GitHub Integration - S3BucketArn value
+[PASS] GitHub Integration - S3BucketArn export name
+[PASS] GitHub Integration - Template files saved
+    Saved to tests/validation/results/github_integration.json and tests/validation/results/github_integration.yaml
+[PASS] Comprehensive Configuration - Template syntax validation
+    Template is valid JSON (42699 bytes)
+[PASS] Comprehensive Configuration - Parameter constraints validation
+    All 25 parameters valid
+[PASS] Comprehensive Configuration - Resource 'S3Bucket' present
+[PASS] Comprehensive Configuration - Resource 'S3BucketPolicy' present
+[PASS] Comprehensive Configuration - KMS encryption logic
+    KMS key present: True, encryption expected: True
+[PASS] Comprehensive Configuration - Lifecycle logic
+    Lifecycle enabled: True, expected: True
+[PASS] Comprehensive Configuration - Notifications logic
+    Lambda ARN present: True, notifications expected: True
+[PASS] Comprehensive Configuration - VPC restriction logic
+    VPC endpoint present: True, restriction expected: True
+[PASS] Comprehensive Configuration - Bucket naming convention
+    Expected prefix: integration-test-comprehensive-prod-
+[PASS] Comprehensive Configuration - Standard-IA transition days
+    Valid days: 30
+[PASS] Comprehensive Configuration - Glacier transition days
+    Valid days: 180
+[PASS] Comprehensive Configuration - Expiration configuration
+    Expiration after 2555 days
+[PASS] Comprehensive Configuration - Policy statements exist
+    Found 7 policy statements
+[PASS] Comprehensive Configuration - HTTPS enforcement policy
+    Policy should deny non-HTTPS requests
+[PASS] Comprehensive Configuration - VPC endpoint restriction
+    Policy should restrict access to VPC endpoint
+[PASS] Comprehensive Configuration - KMS encryption enforcement
+    Policy should enforce KMS encryption
+[PASS] Comprehensive Configuration - Notification event 's3:ObjectCreated:*'
+    Valid S3 event type
+[PASS] Comprehensive Configuration - Notification filters
+    Prefix: 'processed/', Suffix: ''
+[PASS] Comprehensive Configuration - Required tag 'Name'
+[PASS] Comprehensive Configuration - Required tag 'Project'
+[PASS] Comprehensive Configuration - Required tag 'Environment'
+[PASS] Comprehensive Configuration - Required tag 'ManagedBy'
+[PASS] Comprehensive Configuration - GitHub tag 'GitHubOrg'
+[PASS] Comprehensive Configuration - GitHub tag 'GitHubRepo'
+[PASS] Comprehensive Configuration - S3BucketArn description
+[PASS] Comprehensive Configuration - S3BucketArn value
+[PASS] Comprehensive Configuration - S3BucketArn export name
+[PASS] Comprehensive Configuration - Template files saved
+    Saved to tests/validation/results/comprehensive_configuration.json and tests/validation/results/comprehensive_configuration.yaml
+
+Scenario Details:
+------------------------------
+
+Scenario: Minimal Configuration
+Description: Basic S3 bucket with minimal required parameters
+Requirements: 1.1
+Parameters: 3
+  ProjectName: integration-test
+  Environment: devl
+  S3BucketBaseName: minimal-bucket
+
+Scenario: KMS Encryption Enabled
+Description: S3 bucket with KMS encryption and versioning
+Requirements: 1.1, 1.2, 1.3
+Parameters: 5
+  ProjectName: integration-test
+  Environment: prod
+  S3BucketBaseName: encrypted-bucket
+  KmsMasterKeyArn: arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+  BucketVersioningEnabled: true
+
+Scenario: Full Lifecycle Configuration
+Description: S3 bucket with comprehensive lifecycle management
+Requirements: 1.1, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6
+Parameters: 19
+  ProjectName: integration-test
+  Environment: test
+  S3BucketBaseName: lifecycle-bucket
+  S3LifecycleConfigurationEnabled: true
+  TransitionPrefix: data/
+  TransitionToStandardIAEnabled: true
+  TransitionToStandardIADays: 30
+  TransitionToIntelligentTieringEnabled: true
+  TransitionToIntelligentTieringDays: 60
+  TransitionToOneZoneIAEnabled: true
+  TransitionToOneZoneIADays: 90
+  TransitionToGlacierIREnabled: true
+  TransitionToGlacierIRDays: 120
+  TransitionToGlacierEnabled: true
+  TransitionToGlacierDays: 180
+  TransitionToDeepArchiveEnabled: true
+  TransitionToDeepArchiveDays: 365
+  EnableExpiration: true
+  ExpirationDays: 2555
+
+Scenario: Lambda Event Notifications
+Description: S3 bucket with Lambda event notifications and filtering
+Requirements: 1.1, 4.1, 4.2, 4.3
+Parameters: 7
+  ProjectName: integration-test
+  Environment: devl
+  S3BucketBaseName: notify-bucket
+  LambdaFunctionArn: arn:aws:lambda:us-east-1:123456789012:function:s3-processor
+  NotificationEvents: ['s3:ObjectCreated:*', 's3:ObjectRemoved:*']
+  Prefix: uploads/
+  Suffix: .jpg
+
+Scenario: Security Configuration
+Description: S3 bucket with comprehensive security policies and access controls
+Requirements: 1.1, 3.1, 3.2, 3.3, 3.4, 3.5
+Parameters: 7
+  ProjectName: integration-test
+  Environment: prod
+  S3BucketBaseName: secure-bucket
+  S3VpcEndpointId: vpce-12345678
+  IAMRoleBaseName: S3AccessRole
+  WhitelistedUserId: AIDACKCEVSQ6C2EXAMPLE
+  WhitelistedRoleId: AROACKCEVSQ6C2EXAMPLE
+
+Scenario: GitHub Integration
+Description: S3 bucket with GitHub integration and CI/CD metadata
+Requirements: 1.1, 6.1, 6.3
+Parameters: 6
+  ProjectName: integration-test
+  Environment: devl
+  S3BucketBaseName: github-bucket
+  GitHubOrg: my-organization
+  GitHubRepo: my-repository
+  CiBuild: build-12345
+
+Scenario: Comprehensive Configuration
+Description: S3 bucket with all features enabled for complete integration testing
+Requirements: 1.1, 1.2, 1.3, 1.4, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 3.1, 3.2, 3.3, 3.4, 3.5, 4.1, 4.2, 4.3, 6.1, 6.2, 6.3
+Parameters: 25
+  ProjectName: integration-test
+  Environment: prod
+  S3BucketBaseName: comprehensive
+  GitHubOrg: my-organization
+  GitHubRepo: comprehensive-repo
+  CiBuild: build-67890
+  KmsMasterKeyArn: arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+  BucketVersioningEnabled: true
+  BlockPublicAcls: true
+  BlockPublicPolicy: true
+  IgnorePublicAcls: true
+  RestrictPublicBuckets: true
+  S3LifecycleConfigurationEnabled: true
+  TransitionPrefix: data/
+  TransitionToStandardIAEnabled: true
+  TransitionToStandardIADays: 30
+  TransitionToGlacierEnabled: true
+  TransitionToGlacierDays: 180
+  EnableExpiration: true
+  ExpirationDays: 2555
+  LambdaFunctionArn: arn:aws:lambda:us-east-1:123456789012:function:comprehensive-processor
+  NotificationEvents: ['s3:ObjectCreated:*']
+  Prefix: processed/
+  S3VpcEndpointId: vpce-87654321
+  IAMRoleBaseName: ComprehensiveS3Role

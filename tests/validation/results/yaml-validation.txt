@@ -1,0 +1,3 @@
+YAML parsing successful
+Template has 36 parameters
+Template has 2 resources
