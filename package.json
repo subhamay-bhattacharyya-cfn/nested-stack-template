@@ -1,5 +1,5 @@
 {
-  "name": "cloudformation-template",
+  "name": "nested-stack-template",
   "version": "0.0.1",
   "description": "A GitHub template repository to manage AWS resources using CloudFormation.",
   "license": "MIT",
@@ -19,7 +19,7 @@
   ],
   "author": "Subhamay Bhattacharyya",
   "bugs": {
-    "url": "https://github.com/subhamay-bhattacharyya/cloudformation-template/issues"
+    "url": "https://github.com/subhamay-bhattacharyya/nested-stack-template/issues"
   },
-  "homepage": "https://github.com/subhamay-bhattacharyya/cloudformation-template#readme"
+  "homepage": "https://github.com/subhamay-bhattacharyya/nested-stack-template#readme"
 }

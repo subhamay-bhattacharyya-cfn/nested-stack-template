@@ -1,4 +1,4 @@
-name: Create
+name: Create Release
 run-name: Merge Pull Request run by ${{ github.actor }} on ${{ github.ref_name }}
 
 on:
@@ -37,7 +37,7 @@ jobs:
 
   # create-release:
   #   name: Create Release
-  #   uses: subhamay-bhattacharyya-gha/tf-release-wf/.github/workflows/create-release.yaml@feature/GHA-0002-initial-release
+  #   uses: subhamay-bhattacharyya-cfn/tf-release-wf/.github/workflows/create-release.yaml@feature/GHA-0002-initial-release
   #   with:
   #     environment: "ci"
   #     terraform-dir: "tf"

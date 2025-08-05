@@ -1,0 +1,745 @@
+=== CloudFormation Template Validation Test Suite ===
+Started at: Tue Aug  5 17:33:48 EDT 2025
+Template: cfn/template.yaml
+
+[0;34mStarting test execution...[0m
+[0;34m=== Running Template Syntax Validation ===[0m
+=== CloudFormation Template Syntax Validation Tests ===
+Template: /Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml
+
+[1;33mTest 1: AWS CLI Template Validation[0m
+[1;33m⚠ AWS CLI validation skipped (authentication required)[0m
+Note: AWS CLI validation requires valid AWS credentials
+
+[1;33mTest 2: cfn-lint Validation[0m
+[0;31m✗ cfn-lint found issues:[0m
+E1019 {'Fn::Not': [{'Fn::Equals': [{'Ref': 'CiBuild'}, '']}]} is not one of ['EnableKMSEncryption', 'S3LifecycleConfigurationEnabled', 'TransitionToStandardIAEnabled', 'TransitionToIntelligentTieringEnabled', 'TransitionToOneZoneIAEnabled', 'TransitionToGlacierIREnabled', 'TransitionToGlacierEnabled', 'TransitionToDeepArchiveEnabled', 'ExpirationEnabled', 'BucketVersioningEnabled', 'LambdaEventNotifyConfigEnabled', 'HasNotificationPrefix', 'HasNotificationSuffix', 'HasNotificationFilters', 'HasVpcEndpointRestriction', 'HasWhitelistedUserId', 'HasWhitelistedRoleId', 'HasIAMRoleAccess']
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:529:13
+
+E1019 {'Fn::Not': [{'Fn::Equals': [{'Ref': 'CiBuild'}, '']}]} is not of type 'string'
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:529:13
+
+E3002 Additional properties are not allowed ('Filter' was unexpected)
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:554:15
+
+E1019 {'Fn::Not': [{'Fn::Equals': [{'Ref': 'CiBuild'}, '']}]} is not one of ['EnableKMSEncryption', 'S3LifecycleConfigurationEnabled', 'TransitionToStandardIAEnabled', 'TransitionToIntelligentTieringEnabled', 'TransitionToOneZoneIAEnabled', 'TransitionToGlacierIREnabled', 'TransitionToGlacierEnabled', 'TransitionToDeepArchiveEnabled', 'ExpirationEnabled', 'BucketVersioningEnabled', 'LambdaEventNotifyConfigEnabled', 'HasNotificationPrefix', 'HasNotificationSuffix', 'HasNotificationFilters', 'HasVpcEndpointRestriction', 'HasWhitelistedUserId', 'HasWhitelistedRoleId', 'HasIAMRoleAccess']
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:618:17
+
+E1019 {'Fn::Not': [{'Fn::Equals': [{'Ref': 'CiBuild'}, '']}]} is not of type 'string'
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:618:17
+
+E3024 {'Fn::Not': [{'Fn::Equals': [{'Ref': 'CiBuild'}, '']}]} is not one of ['EnableKMSEncryption', 'S3LifecycleConfigurationEnabled', 'TransitionToStandardIAEnabled', 'TransitionToIntelligentTieringEnabled', 'TransitionToOneZoneIAEnabled', 'TransitionToGlacierIREnabled', 'TransitionToGlacierEnabled', 'TransitionToDeepArchiveEnabled', 'ExpirationEnabled', 'BucketVersioningEnabled', 'LambdaEventNotifyConfigEnabled', 'HasNotificationPrefix', 'HasNotificationSuffix', 'HasNotificationFilters', 'HasVpcEndpointRestriction', 'HasWhitelistedUserId', 'HasWhitelistedRoleId', 'HasIAMRoleAccess']
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:618:17
+
+E3024 {'Fn::Not': [{'Fn::Equals': [{'Ref': 'CiBuild'}, '']}]} is not of type 'string'
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:618:17
+
+E1019 'AWS::Timestamp' is not one of ['ProjectName', 'Environment', 'GitHubOrg', 'GitHubRepo', 'CiBuild', 'KmsMasterKeyArn', 'S3BucketBaseName', 'BucketVersioningEnabled', 'BlockPublicAcls', 'BlockPublicPolicy', 'IgnorePublicAcls', 'RestrictPublicBuckets', 'S3VpcEndpointId', 'S3LifecycleConfigurationEnabled', 'TransitionPrefix', 'TransitionToStandardIAEnabled', 'TransitionToStandardIADays', 'TransitionToIntelligentTieringEnabled', 'TransitionToIntelligentTieringDays', 'TransitionToOneZoneIAEnabled', 'TransitionToOneZoneIADays', 'TransitionToGlacierIREnabled', 'TransitionToGlacierIRDays', 'TransitionToGlacierEnabled', 'TransitionToGlacierDays', 'TransitionToDeepArchiveEnabled', 'TransitionToDeepArchiveDays', 'EnableExpiration', 'ExpirationDays', 'LambdaFunctionArn', 'NotificationEvents', 'Prefix', 'Suffix', 'IAMRoleBaseName', 'WhitelistedUserId', 'WhitelistedRoleId', 'S3Bucket', 'S3BucketPolicy', 'AWS::AccountId', 'AWS::NoValue', 'AWS::NotificationARNs', 'AWS::Partition', 'AWS::Region', 'AWS::StackId', 'AWS::StackName', 'AWS::URLSuffix']
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:638:11
+
+E3024 'AWS::Timestamp' is not one of ['ProjectName', 'Environment', 'GitHubOrg', 'GitHubRepo', 'CiBuild', 'KmsMasterKeyArn', 'S3BucketBaseName', 'BucketVersioningEnabled', 'BlockPublicAcls', 'BlockPublicPolicy', 'IgnorePublicAcls', 'RestrictPublicBuckets', 'S3VpcEndpointId', 'S3LifecycleConfigurationEnabled', 'TransitionPrefix', 'TransitionToStandardIAEnabled', 'TransitionToStandardIADays', 'TransitionToIntelligentTieringEnabled', 'TransitionToIntelligentTieringDays', 'TransitionToOneZoneIAEnabled', 'TransitionToOneZoneIADays', 'TransitionToGlacierIREnabled', 'TransitionToGlacierIRDays', 'TransitionToGlacierEnabled', 'TransitionToGlacierDays', 'TransitionToDeepArchiveEnabled', 'TransitionToDeepArchiveDays', 'EnableExpiration', 'ExpirationDays', 'LambdaFunctionArn', 'NotificationEvents', 'Prefix', 'Suffix', 'IAMRoleBaseName', 'WhitelistedUserId', 'WhitelistedRoleId', 'S3Bucket', 'S3BucketPolicy', 'AWS::AccountId', 'AWS::NoValue', 'AWS::NotificationARNs', 'AWS::Partition', 'AWS::Region', 'AWS::StackId', 'AWS::StackName', 'AWS::URLSuffix']
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:638:11
+
+
+[1;33mTest 3: YAML Syntax Validation[0m
+[0;32m✓ YAML syntax is valid[0m
+YAML parsing successful
+Template has 36 parameters
+Template has 2 resources
+
+[1;33mTest 4: Template Size Validation[0m
+[0;32m✓ Template size is within limits:    29293 bytes (max: 460800)[0m
+
+[1;33mTest 5: Required Sections Validation[0m
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/__init__.py", line 125, in safe_load
+    return load(stream, SafeLoader)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/__init__.py", line 81, in load
+    return loader.get_single_data()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 51, in get_single_data
+    return self.construct_document(node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 60, in construct_document
+    for dummy in generator:
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 413, in construct_yaml_map
+    value = self.construct_mapping(node)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 218, in construct_mapping
+    return super().construct_mapping(node, deep=deep)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 143, in construct_mapping
+    value = self.construct_object(value_node, deep=deep)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 100, in construct_object
+    data = constructor(self, node)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yaml/constructor.py", line 427, in construct_undefined
+    raise ConstructorError(None, None,
+yaml.constructor.ConstructorError: could not determine a constructor for the tag '!Not'
+  in "cfn/template.yaml", line 468, column 24
+[0;31m✗ Template Syntax Validation FAILED[0m
+
+[0;34m=== Running Parameter Validation Tests ===[0m
+=== CloudFormation Parameter Validation Tests ===
+Template: cfn/template.yaml
+Total parameters: 36
+
+=== Testing ProjectName Parameter ===
+✓ PASS: ProjectName pattern validation: 'my-project'
+✓ PASS: ProjectName pattern validation: 'test123'
+✓ PASS: ProjectName pattern validation: 'a-b-c-d'
+✓ PASS: ProjectName pattern validation: 'MyProject'
+✓ PASS: ProjectName pattern validation: 'my_project'
+✓ PASS: ProjectName pattern validation: 'my project'
+✓ PASS: ProjectName pattern validation: 'my.project'
+✓ PASS: ProjectName pattern validation: ''
+✗ FAIL: ProjectName pattern validation: 'a'
+    Value 'a' should not match pattern '^[a-z0-9-]+$'
+✗ FAIL: ProjectName pattern validation: 'ab'
+    Value 'ab' should not match pattern '^[a-z0-9-]+$'
+✗ FAIL: ProjectName pattern validation: 'abc'
+    Value 'abc' should not match pattern '^[a-z0-9-]+$'
+✗ FAIL: ProjectName pattern validation: 'abcd'
+    Value 'abcd' should not match pattern '^[a-z0-9-]+$'
+✓ PASS: ProjectName pattern validation: 'abcde'
+✓ PASS: ProjectName pattern validation: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+✗ FAIL: ProjectName pattern validation: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+    Value 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' should not match pattern '^[a-z0-9-]+$'
+✓ PASS: ProjectName length validation: 'my-project' (length: 10)
+✓ PASS: ProjectName length validation: 'test123' (length: 7)
+✓ PASS: ProjectName length validation: 'a-b-c-d' (length: 7)
+✗ FAIL: ProjectName length validation: 'MyProject' (length: 9)
+    Length 9 should not be between 5-30
+✗ FAIL: ProjectName length validation: 'my_project' (length: 10)
+    Length 10 should not be between 5-30
+✗ FAIL: ProjectName length validation: 'my project' (length: 10)
+    Length 10 should not be between 5-30
+✗ FAIL: ProjectName length validation: 'my.project' (length: 10)
+    Length 10 should not be between 5-30
+✓ PASS: ProjectName length validation: '' (length: 0)
+✓ PASS: ProjectName length validation: 'a' (length: 1)
+✓ PASS: ProjectName length validation: 'ab' (length: 2)
+✓ PASS: ProjectName length validation: 'abc' (length: 3)
+✓ PASS: ProjectName length validation: 'abcd' (length: 4)
+✓ PASS: ProjectName length validation: 'abcde' (length: 5)
+✓ PASS: ProjectName length validation: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' (length: 30)
+✓ PASS: ProjectName length validation: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' (length: 31)
+
+=== Testing Environment Parameter ===
+✓ PASS: Environment allowed values validation: 'devl'
+✓ PASS: Environment allowed values validation: 'test'
+✓ PASS: Environment allowed values validation: 'prod'
+✓ PASS: Environment allowed values validation: 'dev'
+✓ PASS: Environment allowed values validation: 'development'
+✓ PASS: Environment allowed values validation: 'staging'
+✓ PASS: Environment allowed values validation: 'production'
+✓ PASS: Environment allowed values validation: 'PROD'
+✓ PASS: Environment allowed values validation: ''
+
+=== Testing KmsMasterKeyArn Parameter ===
+✓ PASS: KmsMasterKeyArn pattern validation: ''
+✓ PASS: KmsMasterKeyArn pattern validation: 'arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012'
+✓ PASS: KmsMasterKeyArn pattern validation: 'arn:aws:kms:eu-west-1:987654321098:key/abcdef12-3456-7890-abcd-ef1234567890'
+✓ PASS: KmsMasterKeyArn pattern validation: 'arn:aws-us-gov:kms:us-gov-west-1:123456789012:key/12345678-1234-1234-1234-123456789012'
+✓ PASS: KmsMasterKeyArn pattern validation: 'invalid-arn'
+✓ PASS: KmsMasterKeyArn pattern validation: 'arn:aws:s3:::my-bucket'
+✓ PASS: KmsMasterKeyArn pattern validation: 'arn:aws:kms:us-east-1:123456789012:alias/my-key'
+✓ PASS: KmsMasterKeyArn pattern validation: 'arn:aws:kms:us-east-1:123456789012:key/invalid-key-id'
+
+=== Testing S3BucketBaseName Parameter ===
+✓ PASS: S3BucketBaseName pattern validation: 'my-bucket'
+✓ PASS: S3BucketBaseName pattern validation: 'bucket123'
+✓ PASS: S3BucketBaseName pattern validation: 'my.bucket'
+✓ PASS: S3BucketBaseName pattern validation: 'a-b-c'
+✓ PASS: S3BucketBaseName pattern validation: 'abc'
+✓ PASS: S3BucketBaseName pattern validation: 'aaaaaaaaaaaaaaaaaaaa'
+✓ PASS: S3BucketBaseName pattern validation: 'MyBucket'
+✓ PASS: S3BucketBaseName pattern validation: 'my_bucket'
+✓ PASS: S3BucketBaseName pattern validation: 'my bucket'
+✓ PASS: S3BucketBaseName pattern validation: 'ab'
+✓ PASS: S3BucketBaseName pattern validation: 'aaaaaaaaaaaaaaaaaaaaa'
+✓ PASS: S3BucketBaseName pattern validation: ''
+✗ FAIL: S3BucketBaseName pattern validation: '-bucket'
+    Value '-bucket' should not match pattern '^[a-z0-9.-]{3,20}$'
+✗ FAIL: S3BucketBaseName pattern validation: 'bucket-'
+    Value 'bucket-' should not match pattern '^[a-z0-9.-]{3,20}$'
+✗ FAIL: S3BucketBaseName pattern validation: '.bucket'
+    Value '.bucket' should not match pattern '^[a-z0-9.-]{3,20}$'
+✗ FAIL: S3BucketBaseName pattern validation: 'bucket.'
+    Value 'bucket.' should not match pattern '^[a-z0-9.-]{3,20}$'
+✓ PASS: S3BucketBaseName length validation: 'my-bucket' (length: 9)
+✓ PASS: S3BucketBaseName length validation: 'bucket123' (length: 9)
+✓ PASS: S3BucketBaseName length validation: 'my.bucket' (length: 9)
+✓ PASS: S3BucketBaseName length validation: 'a-b-c' (length: 5)
+✓ PASS: S3BucketBaseName length validation: 'abc' (length: 3)
+✓ PASS: S3BucketBaseName length validation: 'aaaaaaaaaaaaaaaaaaaa' (length: 20)
+✗ FAIL: S3BucketBaseName length validation: 'MyBucket' (length: 8)
+    Length 8 should not be between 3-20
+✗ FAIL: S3BucketBaseName length validation: 'my_bucket' (length: 9)
+    Length 9 should not be between 3-20
+✗ FAIL: S3BucketBaseName length validation: 'my bucket' (length: 9)
+    Length 9 should not be between 3-20
+✓ PASS: S3BucketBaseName length validation: 'ab' (length: 2)
+✓ PASS: S3BucketBaseName length validation: 'aaaaaaaaaaaaaaaaaaaaa' (length: 21)
+✓ PASS: S3BucketBaseName length validation: '' (length: 0)
+✗ FAIL: S3BucketBaseName length validation: '-bucket' (length: 7)
+    Length 7 should not be between 3-20
+✗ FAIL: S3BucketBaseName length validation: 'bucket-' (length: 7)
+    Length 7 should not be between 3-20
+✗ FAIL: S3BucketBaseName length validation: '.bucket' (length: 7)
+    Length 7 should not be between 3-20
+✗ FAIL: S3BucketBaseName length validation: 'bucket.' (length: 7)
+    Length 7 should not be between 3-20
+
+=== Testing Lifecycle Numeric Parameters ===
+✓ PASS: TransitionToStandardIADays numeric validation: 30
+✓ PASS: TransitionToStandardIADays numeric validation: 185
+✓ PASS: TransitionToStandardIADays numeric validation: 90
+✓ PASS: TransitionToStandardIADays numeric validation: 29
+✓ PASS: TransitionToStandardIADays numeric validation: 186
+✓ PASS: TransitionToStandardIADays numeric validation: 0
+✓ PASS: TransitionToStandardIADays numeric validation: -1
+✓ PASS: TransitionToDeepArchiveDays numeric validation: 365
+✓ PASS: TransitionToDeepArchiveDays numeric validation: 500
+✓ PASS: TransitionToDeepArchiveDays numeric validation: 400
+✓ PASS: TransitionToDeepArchiveDays numeric validation: 364
+✓ PASS: TransitionToDeepArchiveDays numeric validation: 501
+
+=== Testing LambdaFunctionArn Parameter ===
+✓ PASS: LambdaFunctionArn pattern validation: ''
+✓ PASS: LambdaFunctionArn pattern validation: 'arn:aws:lambda:us-east-1:123456789012:function:my-function'
+✓ PASS: LambdaFunctionArn pattern validation: 'arn:aws:lambda:us-east-1:123456789012:function:my-function:$LATEST'
+✓ PASS: LambdaFunctionArn pattern validation: 'arn:aws:lambda:us-east-1:123456789012:function:my-function:1'
+✓ PASS: LambdaFunctionArn pattern validation: 'arn:aws:lambda:us-east-1:123456789012:function:my-function:PROD'
+✓ PASS: LambdaFunctionArn pattern validation: 'invalid-arn'
+✓ PASS: LambdaFunctionArn pattern validation: 'arn:aws:s3:::my-bucket'
+✓ PASS: LambdaFunctionArn pattern validation: 'arn:aws:lambda:us-east-1:123456789012:layer:my-layer:1'
+
+=== Testing S3VpcEndpointId Parameter ===
+✓ PASS: S3VpcEndpointId pattern validation: ''
+✓ PASS: S3VpcEndpointId pattern validation: 'vpce-12345678'
+✓ PASS: S3VpcEndpointId pattern validation: 'vpce-1234567890abcdef1'
+✓ PASS: S3VpcEndpointId pattern validation: 'vpce-abc123def456'
+✓ PASS: S3VpcEndpointId pattern validation: 'invalid-endpoint'
+✓ PASS: S3VpcEndpointId pattern validation: 'vpce-'
+✓ PASS: S3VpcEndpointId pattern validation: 'vpce-1234567'
+✓ PASS: S3VpcEndpointId pattern validation: 'vpce-1234567890abcdef12'
+✓ PASS: S3VpcEndpointId pattern validation: 'VPCE-12345678'
+
+=== Testing AWS User/Role ID Parameters ===
+✓ PASS: WhitelistedUserId pattern validation: ''
+✓ PASS: WhitelistedUserId pattern validation: 'AIDACKCEVSQ6C2EXAMPLE'
+✓ PASS: WhitelistedUserId pattern validation: 'AROACKCEVSQ6C2EXAMPLE'
+✓ PASS: WhitelistedUserId pattern validation: 'AIDACKCEVSQ6C2EXAMPL'
+✓ PASS: WhitelistedUserId pattern validation: 'AIDACKCEVSQ6C2EXAMPLES'
+✓ PASS: WhitelistedUserId pattern validation: 'aidackcevsq6c2example'
+✓ PASS: WhitelistedUserId pattern validation: 'AIDACKCEVSQ6C2EXAMPL!'
+✓ PASS: WhitelistedRoleId pattern validation: ''
+✓ PASS: WhitelistedRoleId pattern validation: 'AIDACKCEVSQ6C2EXAMPLE'
+✓ PASS: WhitelistedRoleId pattern validation: 'AROACKCEVSQ6C2EXAMPLE'
+✓ PASS: WhitelistedRoleId pattern validation: 'AIDACKCEVSQ6C2EXAMPL'
+✓ PASS: WhitelistedRoleId pattern validation: 'AIDACKCEVSQ6C2EXAMPLES'
+✓ PASS: WhitelistedRoleId pattern validation: 'aidackcevsq6c2example'
+✓ PASS: WhitelistedRoleId pattern validation: 'AIDACKCEVSQ6C2EXAMPL!'
+
+=== Testing GitHub Parameters ===
+✓ PASS: GitHubOrg pattern validation: ''
+✓ PASS: GitHubOrg pattern validation: 'my-org'
+✓ PASS: GitHubOrg pattern validation: 'MyOrg123'
+✓ PASS: GitHubOrg pattern validation: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+✗ FAIL: GitHubOrg pattern validation: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+    Value 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' should not match pattern '^[a-zA-Z0-9-]*$'
+✓ PASS: GitHubOrg pattern validation: 'my_org'
+✓ PASS: GitHubOrg pattern validation: 'my org'
+✓ PASS: GitHubOrg length validation: '' (length: 0)
+✓ PASS: GitHubOrg length validation: 'my-org' (length: 6)
+✓ PASS: GitHubOrg length validation: 'MyOrg123' (length: 8)
+✓ PASS: GitHubOrg length validation: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' (length: 50)
+✓ PASS: GitHubOrg length validation: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' (length: 51)
+✗ FAIL: GitHubOrg length validation: 'my_org' (length: 6)
+    Length 6 should not be between 0-50
+✗ FAIL: GitHubOrg length validation: 'my org' (length: 6)
+    Length 6 should not be between 0-50
+
+=== Test Summary ===
+Total tests: 136
+Passed: 113
+Failed: 23
+
+Failed tests:
+  - ProjectName pattern validation: 'a'
+    Value 'a' should not match pattern '^[a-z0-9-]+$'
+  - ProjectName pattern validation: 'ab'
+    Value 'ab' should not match pattern '^[a-z0-9-]+$'
+  - ProjectName pattern validation: 'abc'
+    Value 'abc' should not match pattern '^[a-z0-9-]+$'
+  - ProjectName pattern validation: 'abcd'
+    Value 'abcd' should not match pattern '^[a-z0-9-]+$'
+  - ProjectName pattern validation: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+    Value 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' should not match pattern '^[a-z0-9-]+$'
+  - ProjectName length validation: 'MyProject' (length: 9)
+    Length 9 should not be between 5-30
+  - ProjectName length validation: 'my_project' (length: 10)
+    Length 10 should not be between 5-30
+  - ProjectName length validation: 'my project' (length: 10)
+    Length 10 should not be between 5-30
+  - ProjectName length validation: 'my.project' (length: 10)
+    Length 10 should not be between 5-30
+  - S3BucketBaseName pattern validation: '-bucket'
+    Value '-bucket' should not match pattern '^[a-z0-9.-]{3,20}$'
+  - S3BucketBaseName pattern validation: 'bucket-'
+    Value 'bucket-' should not match pattern '^[a-z0-9.-]{3,20}$'
+  - S3BucketBaseName pattern validation: '.bucket'
+    Value '.bucket' should not match pattern '^[a-z0-9.-]{3,20}$'
+  - S3BucketBaseName pattern validation: 'bucket.'
+    Value 'bucket.' should not match pattern '^[a-z0-9.-]{3,20}$'
+  - S3BucketBaseName length validation: 'MyBucket' (length: 8)
+    Length 8 should not be between 3-20
+  - S3BucketBaseName length validation: 'my_bucket' (length: 9)
+    Length 9 should not be between 3-20
+  - S3BucketBaseName length validation: 'my bucket' (length: 9)
+    Length 9 should not be between 3-20
+  - S3BucketBaseName length validation: '-bucket' (length: 7)
+    Length 7 should not be between 3-20
+  - S3BucketBaseName length validation: 'bucket-' (length: 7)
+    Length 7 should not be between 3-20
+  - S3BucketBaseName length validation: '.bucket' (length: 7)
+    Length 7 should not be between 3-20
+  - S3BucketBaseName length validation: 'bucket.' (length: 7)
+    Length 7 should not be between 3-20
+  - GitHubOrg pattern validation: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+    Value 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' should not match pattern '^[a-zA-Z0-9-]*$'
+  - GitHubOrg length validation: 'my_org' (length: 6)
+    Length 6 should not be between 0-50
+  - GitHubOrg length validation: 'my org' (length: 6)
+    Length 6 should not be between 0-50
+[0;31m✗ Parameter Validation Tests FAILED[0m
+
+[0;34m=== Running Conditional Logic Tests ===[0m
+=== CloudFormation Conditional Logic Tests ===
+Template: cfn/template.yaml
+Total conditions: 18
+
+=== Testing Condition Definitions ===
+✓ PASS: Condition 'EnableKMSEncryption' is defined
+✓ PASS: Condition 'S3LifecycleConfigurationEnabled' is defined
+✓ PASS: Condition 'TransitionToStandardIAEnabled' is defined
+✓ PASS: Condition 'TransitionToIntelligentTieringEnabled' is defined
+✓ PASS: Condition 'TransitionToOneZoneIAEnabled' is defined
+✓ PASS: Condition 'TransitionToGlacierIREnabled' is defined
+✓ PASS: Condition 'TransitionToGlacierEnabled' is defined
+✓ PASS: Condition 'TransitionToDeepArchiveEnabled' is defined
+✓ PASS: Condition 'ExpirationEnabled' is defined
+✓ PASS: Condition 'BucketVersioningEnabled' is defined
+✓ PASS: Condition 'LambdaEventNotifyConfigEnabled' is defined
+✓ PASS: Condition 'HasNotificationPrefix' is defined
+✓ PASS: Condition 'HasNotificationSuffix' is defined
+✓ PASS: Condition 'HasNotificationFilters' is defined
+✓ PASS: Condition 'HasVpcEndpointRestriction' is defined
+✓ PASS: Condition 'HasWhitelistedUserId' is defined
+✓ PASS: Condition 'HasWhitelistedRoleId' is defined
+✓ PASS: Condition 'HasIAMRoleAccess' is defined
+
+=== Testing KMS Encryption Condition ===
+✓ PASS: EnableKMSEncryption condition exists
+✗ FAIL: EnableKMSEncryption uses correct logic
+    Should check if KmsMasterKeyArn is not empty
+
+=== Testing Lifecycle Conditions ===
+✓ PASS: S3LifecycleConfigurationEnabled condition exists
+✓ PASS: TransitionToStandardIAEnabled condition exists
+✗ FAIL: TransitionToStandardIAEnabled uses correct logic
+    Should combine master condition with individual toggle
+✓ PASS: TransitionToIntelligentTieringEnabled condition exists
+✗ FAIL: TransitionToIntelligentTieringEnabled uses correct logic
+    Should combine master condition with individual toggle
+✓ PASS: TransitionToOneZoneIAEnabled condition exists
+✗ FAIL: TransitionToOneZoneIAEnabled uses correct logic
+    Should combine master condition with individual toggle
+✓ PASS: TransitionToGlacierIREnabled condition exists
+✗ FAIL: TransitionToGlacierIREnabled uses correct logic
+    Should combine master condition with individual toggle
+✓ PASS: TransitionToGlacierEnabled condition exists
+✗ FAIL: TransitionToGlacierEnabled uses correct logic
+    Should combine master condition with individual toggle
+✓ PASS: TransitionToDeepArchiveEnabled condition exists
+✗ FAIL: TransitionToDeepArchiveEnabled uses correct logic
+    Should combine master condition with individual toggle
+
+=== Testing Notification Conditions ===
+✓ PASS: LambdaEventNotifyConfigEnabled condition exists
+✗ FAIL: LambdaEventNotifyConfigEnabled uses correct logic
+    Should check if LambdaFunctionArn is not empty
+✓ PASS: HasNotificationPrefix condition exists
+✓ PASS: HasNotificationSuffix condition exists
+✓ PASS: HasNotificationFilters condition exists
+
+=== Testing Security Conditions ===
+✓ PASS: HasVpcEndpointRestriction condition exists
+✗ FAIL: HasVpcEndpointRestriction uses correct logic
+    Should check if parameter is not empty
+✓ PASS: HasWhitelistedUserId condition exists
+✗ FAIL: HasWhitelistedUserId uses correct logic
+    Should check if parameter is not empty
+✓ PASS: HasWhitelistedRoleId condition exists
+✗ FAIL: HasWhitelistedRoleId uses correct logic
+    Should check if parameter is not empty
+✓ PASS: HasIAMRoleAccess condition exists
+✗ FAIL: HasIAMRoleAccess uses correct logic
+    Should check if parameter is not empty
+
+=== Testing Resource Conditional Properties ===
+✗ FAIL: S3Bucket BucketEncryption uses conditional logic
+    Should use !If with EnableKMSEncryption condition
+✗ FAIL: S3Bucket LifecycleConfiguration uses conditional logic
+    Should use !If with S3LifecycleConfigurationEnabled condition
+✗ FAIL: S3Bucket NotificationConfiguration uses conditional logic
+    Should use !If with LambdaEventNotifyConfigEnabled condition
+
+=== Testing Bucket Policy Conditional Statements ===
+✓ PASS: S3BucketPolicy has statements
+    Found 7 statements
+✗ FAIL: Bucket policy has conditional statements
+    No conditional statements found
+
+=== Testing Parameter Combination Scenarios ===
+✓ PASS: All lifecycle transitions enabled scenario - all conditions exist
+✓ PASS: Security features enabled scenario - all conditions exist
+✓ PASS: Minimal configuration scenario - supported
+
+=== Testing Condition Dependencies ===
+✓ PASS: TransitionToStandardIAEnabled depends on master lifecycle condition
+✓ PASS: TransitionToIntelligentTieringEnabled depends on master lifecycle condition
+✓ PASS: TransitionToOneZoneIAEnabled depends on master lifecycle condition
+✓ PASS: TransitionToGlacierIREnabled depends on master lifecycle condition
+✓ PASS: TransitionToGlacierEnabled depends on master lifecycle condition
+✓ PASS: TransitionToDeepArchiveEnabled depends on master lifecycle condition
+✓ PASS: ExpirationEnabled depends on master lifecycle condition
+
+=== Test Summary ===
+Total tests: 61
+Passed: 45
+Failed: 16
+
+Failed tests:
+  - EnableKMSEncryption uses correct logic
+    Should check if KmsMasterKeyArn is not empty
+  - TransitionToStandardIAEnabled uses correct logic
+    Should combine master condition with individual toggle
+  - TransitionToIntelligentTieringEnabled uses correct logic
+    Should combine master condition with individual toggle
+  - TransitionToOneZoneIAEnabled uses correct logic
+    Should combine master condition with individual toggle
+  - TransitionToGlacierIREnabled uses correct logic
+    Should combine master condition with individual toggle
+  - TransitionToGlacierEnabled uses correct logic
+    Should combine master condition with individual toggle
+  - TransitionToDeepArchiveEnabled uses correct logic
+    Should combine master condition with individual toggle
+  - LambdaEventNotifyConfigEnabled uses correct logic
+    Should check if LambdaFunctionArn is not empty
+  - HasVpcEndpointRestriction uses correct logic
+    Should check if parameter is not empty
+  - HasWhitelistedUserId uses correct logic
+    Should check if parameter is not empty
+  - HasWhitelistedRoleId uses correct logic
+    Should check if parameter is not empty
+  - HasIAMRoleAccess uses correct logic
+    Should check if parameter is not empty
+  - S3Bucket BucketEncryption uses conditional logic
+    Should use !If with EnableKMSEncryption condition
+  - S3Bucket LifecycleConfiguration uses conditional logic
+    Should use !If with S3LifecycleConfigurationEnabled condition
+  - S3Bucket NotificationConfiguration uses conditional logic
+    Should use !If with LambdaEventNotifyConfigEnabled condition
+  - Bucket policy has conditional statements
+    No conditional statements found
+[0;31m✗ Conditional Logic Tests FAILED[0m
+
+[0;34m=== Running Template Generation Tests ===[0m
+=== CloudFormation Template Generation Tests ===
+Template: cfn/template.yaml
+Testing 7 scenarios
+
+=== Testing Scenario: Minimal Configuration ===
+✓ PASS: Minimal Configuration - JSON generation
+    Generated 42394 characters
+✓ PASS: Minimal Configuration - AWSTemplateFormatVersion section present
+✓ PASS: Minimal Configuration - Description section present
+✓ PASS: Minimal Configuration - Parameters section present
+✓ PASS: Minimal Configuration - Resources section present
+✓ PASS: Minimal Configuration - Metadata section present
+✓ PASS: Minimal Configuration - Conditions section present
+✓ PASS: Minimal Configuration - Outputs section present
+✓ PASS: Minimal Configuration - S3Bucket resource present
+✓ PASS: Minimal Configuration - S3BucketPolicy resource present
+✓ PASS: Minimal Configuration - S3Bucket has correct type
+✓ PASS: Minimal Configuration - S3Bucket has Properties
+✓ PASS: Minimal Configuration - S3Bucket has BucketName
+✓ PASS: Minimal Configuration - S3BucketArn output present
+✓ PASS: Minimal Configuration - S3BucketArn has description
+✓ PASS: Minimal Configuration - S3BucketArn has value
+✓ PASS: Minimal Configuration - template size within limits
+    25720 bytes (max: 460800)
+✓ PASS: Minimal Configuration - parameter 'ProjectName' is referenced
+✓ PASS: Minimal Configuration - parameter 'Environment' is referenced
+✓ PASS: Minimal Configuration - parameter 'S3BucketBaseName' is referenced
+✓ PASS: Minimal Configuration - YAML generation
+    Generated 29010 characters
+✓ PASS: Minimal Configuration - JSON/YAML consistency
+
+=== Testing Scenario: KMS Encryption Enabled ===
+✓ PASS: KMS Encryption Enabled - JSON generation
+    Generated 42474 characters
+✓ PASS: KMS Encryption Enabled - AWSTemplateFormatVersion section present
+✓ PASS: KMS Encryption Enabled - Description section present
+✓ PASS: KMS Encryption Enabled - Parameters section present
+✓ PASS: KMS Encryption Enabled - Resources section present
+✓ PASS: KMS Encryption Enabled - Metadata section present
+✓ PASS: KMS Encryption Enabled - Conditions section present
+✓ PASS: KMS Encryption Enabled - Outputs section present
+✓ PASS: KMS Encryption Enabled - S3Bucket resource present
+✓ PASS: KMS Encryption Enabled - S3BucketPolicy resource present
+✓ PASS: KMS Encryption Enabled - S3Bucket has correct type
+✓ PASS: KMS Encryption Enabled - S3Bucket has Properties
+✓ PASS: KMS Encryption Enabled - S3Bucket has BucketName
+✓ PASS: KMS Encryption Enabled - S3BucketArn output present
+✓ PASS: KMS Encryption Enabled - S3BucketArn has description
+✓ PASS: KMS Encryption Enabled - S3BucketArn has value
+✓ PASS: KMS Encryption Enabled - template size within limits
+    25800 bytes (max: 460800)
+✓ PASS: KMS Encryption Enabled - parameter 'ProjectName' is referenced
+✓ PASS: KMS Encryption Enabled - parameter 'Environment' is referenced
+✓ PASS: KMS Encryption Enabled - parameter 'S3BucketBaseName' is referenced
+✓ PASS: KMS Encryption Enabled - parameter 'KmsMasterKeyArn' is referenced
+✓ PASS: KMS Encryption Enabled - parameter 'BucketVersioningEnabled' is referenced
+✓ PASS: KMS Encryption Enabled - YAML generation
+    Generated 29088 characters
+✓ PASS: KMS Encryption Enabled - JSON/YAML consistency
+
+=== Testing Scenario: Full Lifecycle Configuration ===
+✓ PASS: Full Lifecycle Configuration - JSON generation
+    Generated 42473 characters
+✓ PASS: Full Lifecycle Configuration - AWSTemplateFormatVersion section present
+✓ PASS: Full Lifecycle Configuration - Description section present
+✓ PASS: Full Lifecycle Configuration - Parameters section present
+✓ PASS: Full Lifecycle Configuration - Resources section present
+✓ PASS: Full Lifecycle Configuration - Metadata section present
+✓ PASS: Full Lifecycle Configuration - Conditions section present
+✓ PASS: Full Lifecycle Configuration - Outputs section present
+✓ PASS: Full Lifecycle Configuration - S3Bucket resource present
+✓ PASS: Full Lifecycle Configuration - S3BucketPolicy resource present
+✓ PASS: Full Lifecycle Configuration - S3Bucket has correct type
+✓ PASS: Full Lifecycle Configuration - S3Bucket has Properties
+✓ PASS: Full Lifecycle Configuration - S3Bucket has BucketName
+✓ PASS: Full Lifecycle Configuration - S3BucketArn output present
+✓ PASS: Full Lifecycle Configuration - S3BucketArn has description
+✓ PASS: Full Lifecycle Configuration - S3BucketArn has value
+✓ PASS: Full Lifecycle Configuration - template size within limits
+    25799 bytes (max: 460800)
+✓ PASS: Full Lifecycle Configuration - parameter 'ProjectName' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'Environment' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'S3BucketBaseName' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'S3LifecycleConfigurationEnabled' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'TransitionToStandardIAEnabled' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'TransitionToStandardIADays' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'TransitionToIntelligentTieringEnabled' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'TransitionToIntelligentTieringDays' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'TransitionToOneZoneIAEnabled' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'TransitionToOneZoneIADays' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'TransitionToGlacierIREnabled' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'TransitionToGlacierIRDays' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'TransitionToGlacierEnabled' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'TransitionToGlacierDays' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'TransitionToDeepArchiveEnabled' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'TransitionToDeepArchiveDays' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'EnableExpiration' is referenced
+✓ PASS: Full Lifecycle Configuration - parameter 'ExpirationDays' is referenced
+✓ PASS: Full Lifecycle Configuration - YAML generation
+    Generated 29087 characters
+✓ PASS: Full Lifecycle Configuration - JSON/YAML consistency
+
+=== Testing Scenario: Lambda Notifications ===
+✓ PASS: Lambda Notifications - JSON generation
+    Generated 42585 characters
+✓ PASS: Lambda Notifications - AWSTemplateFormatVersion section present
+✓ PASS: Lambda Notifications - Description section present
+✓ PASS: Lambda Notifications - Parameters section present
+✓ PASS: Lambda Notifications - Resources section present
+✓ PASS: Lambda Notifications - Metadata section present
+✓ PASS: Lambda Notifications - Conditions section present
+✓ PASS: Lambda Notifications - Outputs section present
+✓ PASS: Lambda Notifications - S3Bucket resource present
+✓ PASS: Lambda Notifications - S3BucketPolicy resource present
+✓ PASS: Lambda Notifications - S3Bucket has correct type
+✓ PASS: Lambda Notifications - S3Bucket has Properties
+✓ PASS: Lambda Notifications - S3Bucket has BucketName
+✓ PASS: Lambda Notifications - S3BucketArn output present
+✓ PASS: Lambda Notifications - S3BucketArn has description
+✓ PASS: Lambda Notifications - S3BucketArn has value
+✓ PASS: Lambda Notifications - template size within limits
+    25887 bytes (max: 460800)
+✓ PASS: Lambda Notifications - parameter 'ProjectName' is referenced
+✓ PASS: Lambda Notifications - parameter 'Environment' is referenced
+✓ PASS: Lambda Notifications - parameter 'S3BucketBaseName' is referenced
+✓ PASS: Lambda Notifications - parameter 'LambdaFunctionArn' is referenced
+✓ PASS: Lambda Notifications - parameter 'NotificationEvents' is referenced
+✓ PASS: Lambda Notifications - parameter 'Prefix' is referenced
+✓ PASS: Lambda Notifications - parameter 'Suffix' is referenced
+✓ PASS: Lambda Notifications - YAML generation
+    Generated 29176 characters
+✓ PASS: Lambda Notifications - JSON/YAML consistency
+
+=== Testing Scenario: Security Configuration ===
+✓ PASS: Security Configuration - JSON generation
+    Generated 42654 characters
+✓ PASS: Security Configuration - AWSTemplateFormatVersion section present
+✓ PASS: Security Configuration - Description section present
+✓ PASS: Security Configuration - Parameters section present
+✓ PASS: Security Configuration - Resources section present
+✓ PASS: Security Configuration - Metadata section present
+✓ PASS: Security Configuration - Conditions section present
+✓ PASS: Security Configuration - Outputs section present
+✓ PASS: Security Configuration - S3Bucket resource present
+✓ PASS: Security Configuration - S3BucketPolicy resource present
+✓ PASS: Security Configuration - S3Bucket has correct type
+✓ PASS: Security Configuration - S3Bucket has Properties
+✓ PASS: Security Configuration - S3Bucket has BucketName
+✓ PASS: Security Configuration - S3BucketArn output present
+✓ PASS: Security Configuration - S3BucketArn has description
+✓ PASS: Security Configuration - S3BucketArn has value
+✓ PASS: Security Configuration - template size within limits
+    25956 bytes (max: 460800)
+✓ PASS: Security Configuration - parameter 'ProjectName' is referenced
+✓ PASS: Security Configuration - parameter 'Environment' is referenced
+✓ PASS: Security Configuration - parameter 'S3BucketBaseName' is referenced
+✓ PASS: Security Configuration - parameter 'S3VpcEndpointId' is referenced
+✓ PASS: Security Configuration - parameter 'IAMRoleBaseName' is referenced
+✓ PASS: Security Configuration - parameter 'WhitelistedUserId' is referenced
+✓ PASS: Security Configuration - parameter 'WhitelistedRoleId' is referenced
+✓ PASS: Security Configuration - YAML generation
+    Generated 29237 characters
+✓ PASS: Security Configuration - JSON/YAML consistency
+
+=== Testing Scenario: GitHub Integration ===
+✓ PASS: GitHub Integration - JSON generation
+    Generated 42676 characters
+✓ PASS: GitHub Integration - AWSTemplateFormatVersion section present
+✓ PASS: GitHub Integration - Description section present
+✓ PASS: GitHub Integration - Parameters section present
+✓ PASS: GitHub Integration - Resources section present
+✓ PASS: GitHub Integration - Metadata section present
+✓ PASS: GitHub Integration - Conditions section present
+✓ PASS: GitHub Integration - Outputs section present
+✓ PASS: GitHub Integration - S3Bucket resource present
+✓ PASS: GitHub Integration - S3BucketPolicy resource present
+✓ PASS: GitHub Integration - S3Bucket has correct type
+✓ PASS: GitHub Integration - S3Bucket has Properties
+✓ PASS: GitHub Integration - S3Bucket has BucketName
+✓ PASS: GitHub Integration - S3BucketArn output present
+✓ PASS: GitHub Integration - S3BucketArn has description
+✓ PASS: GitHub Integration - S3BucketArn has value
+✓ PASS: GitHub Integration - template size within limits
+    25978 bytes (max: 460800)
+✓ PASS: GitHub Integration - parameter 'ProjectName' is referenced
+✓ PASS: GitHub Integration - parameter 'Environment' is referenced
+✓ PASS: GitHub Integration - parameter 'S3BucketBaseName' is referenced
+✓ PASS: GitHub Integration - parameter 'GitHubOrg' is referenced
+✓ PASS: GitHub Integration - parameter 'GitHubRepo' is referenced
+✓ PASS: GitHub Integration - parameter 'CiBuild' is referenced
+✓ PASS: GitHub Integration - YAML generation
+    Generated 29253 characters
+✓ PASS: GitHub Integration - JSON/YAML consistency
+
+=== Testing Scenario: Comprehensive Configuration ===
+✓ PASS: Comprehensive Configuration - JSON generation
+    Generated 42676 characters
+✓ PASS: Comprehensive Configuration - AWSTemplateFormatVersion section present
+✓ PASS: Comprehensive Configuration - Description section present
+✓ PASS: Comprehensive Configuration - Parameters section present
+✓ PASS: Comprehensive Configuration - Resources section present
+✓ PASS: Comprehensive Configuration - Metadata section present
+✓ PASS: Comprehensive Configuration - Conditions section present
+✓ PASS: Comprehensive Configuration - Outputs section present
+✓ PASS: Comprehensive Configuration - S3Bucket resource present
+✓ PASS: Comprehensive Configuration - S3BucketPolicy resource present
+✓ PASS: Comprehensive Configuration - S3Bucket has correct type
+✓ PASS: Comprehensive Configuration - S3Bucket has Properties
+✓ PASS: Comprehensive Configuration - S3Bucket has BucketName
+✓ PASS: Comprehensive Configuration - S3BucketArn output present
+✓ PASS: Comprehensive Configuration - S3BucketArn has description
+✓ PASS: Comprehensive Configuration - S3BucketArn has value
+✓ PASS: Comprehensive Configuration - template size within limits
+    25978 bytes (max: 460800)
+✓ PASS: Comprehensive Configuration - parameter 'ProjectName' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'Environment' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'S3BucketBaseName' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'GitHubOrg' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'GitHubRepo' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'CiBuild' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'KmsMasterKeyArn' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'BucketVersioningEnabled' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'S3LifecycleConfigurationEnabled' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'TransitionToStandardIAEnabled' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'TransitionToStandardIADays' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'TransitionToGlacierEnabled' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'TransitionToGlacierDays' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'EnableExpiration' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'ExpirationDays' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'LambdaFunctionArn' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'S3VpcEndpointId' is referenced
+✓ PASS: Comprehensive Configuration - parameter 'IAMRoleBaseName' is referenced
+✓ PASS: Comprehensive Configuration - YAML generation
+    Generated 29253 characters
+✓ PASS: Comprehensive Configuration - JSON/YAML consistency
+
+=== Test Summary ===
+Total tests: 197
+Passed: 197
+Failed: 0
+All template generation tests passed!
+[0;32m✓ Template Generation Tests PASSED[0m
+
+=== FINAL TEST REPORT ===
+Completed at: Tue Aug  5 17:33:55 EDT 2025
+
+Test Suite Summary:
+  Total test suites: 4
+  Passed: 1
+  Failed: 3
+
+[0;31m❌ SOME TESTS FAILED! Please review the failures above.[0m
+
+Failed test suites: 3 out of 4
+Please review the detailed output above and fix any issues.
+
+Detailed test report saved to: /Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/results/test_report_20250805_173348.txt
+Test artifacts saved in: /Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/results
+
+Generated test artifacts:
+total 1232
+drwxr-xr-x@ 22 subhamaybhattacharyya  staff    704 Aug  5 17:33 .
+drwxr-xr-x@  9 subhamaybhattacharyya  staff    288 Aug  5 17:31 ..
+-rw-r--r--@  1 subhamaybhattacharyya  staff    142 Aug  5 17:33 aws-cli-validation.json
+-rw-r--r--@  1 subhamaybhattacharyya  staff   5191 Aug  5 17:33 cfn-lint-results.txt
+-rw-r--r--@  1 subhamaybhattacharyya  staff  42676 Aug  5 17:33 comprehensive_configuration.json
+-rw-r--r--@  1 subhamaybhattacharyya  staff  29253 Aug  5 17:33 comprehensive_configuration.yaml
+-rw-r--r--@  1 subhamaybhattacharyya  staff  42473 Aug  5 17:33 full_lifecycle_configuration.json
+-rw-r--r--@  1 subhamaybhattacharyya  staff  29087 Aug  5 17:33 full_lifecycle_configuration.yaml
+-rw-r--r--@  1 subhamaybhattacharyya  staff  42676 Aug  5 17:33 github_integration.json
+-rw-r--r--@  1 subhamaybhattacharyya  staff  29253 Aug  5 17:33 github_integration.yaml
+-rw-r--r--@  1 subhamaybhattacharyya  staff  42474 Aug  5 17:33 kms_encryption_enabled.json
+-rw-r--r--@  1 subhamaybhattacharyya  staff  29088 Aug  5 17:33 kms_encryption_enabled.yaml
+-rw-r--r--@  1 subhamaybhattacharyya  staff  42585 Aug  5 17:33 lambda_notifications.json
+-rw-r--r--@  1 subhamaybhattacharyya  staff  29176 Aug  5 17:33 lambda_notifications.yaml
+-rw-r--r--@  1 subhamaybhattacharyya  staff  42394 Aug  5 17:33 minimal_configuration.json
+-rw-r--r--@  1 subhamaybhattacharyya  staff  29010 Aug  5 17:33 minimal_configuration.yaml
+-rw-r--r--@  1 subhamaybhattacharyya  staff  42654 Aug  5 17:33 security_configuration.json
+-rw-r--r--@  1 subhamaybhattacharyya  staff  29237 Aug  5 17:33 security_configuration.yaml
+-rw-r--r--@  1 subhamaybhattacharyya  staff   9495 Aug  5 17:31 test_report_20250805_173102.txt
+-rw-r--r--@  1 subhamaybhattacharyya  staff   9589 Aug  5 17:32 test_report_20250805_173220.txt
+-rw-r--r--@  1 subhamaybhattacharyya  staff  43799 Aug  5 17:33 test_report_20250805_173348.txt
+-rw-r--r--@  1 subhamaybhattacharyya  staff     76 Aug  5 17:33 yaml-validation.txt

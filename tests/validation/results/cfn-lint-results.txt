@@ -1,0 +1,27 @@
+E1019 {'Fn::Not': [{'Fn::Equals': [{'Ref': 'CiBuild'}, '']}]} is not one of ['EnableKMSEncryption', 'S3LifecycleConfigurationEnabled', 'TransitionToStandardIAEnabled', 'TransitionToIntelligentTieringEnabled', 'TransitionToOneZoneIAEnabled', 'TransitionToGlacierIREnabled', 'TransitionToGlacierEnabled', 'TransitionToDeepArchiveEnabled', 'ExpirationEnabled', 'BucketVersioningEnabled', 'LambdaEventNotifyConfigEnabled', 'HasNotificationPrefix', 'HasNotificationSuffix', 'HasNotificationFilters', 'HasVpcEndpointRestriction', 'HasWhitelistedUserId', 'HasWhitelistedRoleId', 'HasIAMRoleAccess']
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:529:13
+
+E1019 {'Fn::Not': [{'Fn::Equals': [{'Ref': 'CiBuild'}, '']}]} is not of type 'string'
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:529:13
+
+E3002 Additional properties are not allowed ('Filter' was unexpected)
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:554:15
+
+E1019 {'Fn::Not': [{'Fn::Equals': [{'Ref': 'CiBuild'}, '']}]} is not one of ['EnableKMSEncryption', 'S3LifecycleConfigurationEnabled', 'TransitionToStandardIAEnabled', 'TransitionToIntelligentTieringEnabled', 'TransitionToOneZoneIAEnabled', 'TransitionToGlacierIREnabled', 'TransitionToGlacierEnabled', 'TransitionToDeepArchiveEnabled', 'ExpirationEnabled', 'BucketVersioningEnabled', 'LambdaEventNotifyConfigEnabled', 'HasNotificationPrefix', 'HasNotificationSuffix', 'HasNotificationFilters', 'HasVpcEndpointRestriction', 'HasWhitelistedUserId', 'HasWhitelistedRoleId', 'HasIAMRoleAccess']
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:618:17
+
+E1019 {'Fn::Not': [{'Fn::Equals': [{'Ref': 'CiBuild'}, '']}]} is not of type 'string'
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:618:17
+
+E3024 {'Fn::Not': [{'Fn::Equals': [{'Ref': 'CiBuild'}, '']}]} is not one of ['EnableKMSEncryption', 'S3LifecycleConfigurationEnabled', 'TransitionToStandardIAEnabled', 'TransitionToIntelligentTieringEnabled', 'TransitionToOneZoneIAEnabled', 'TransitionToGlacierIREnabled', 'TransitionToGlacierEnabled', 'TransitionToDeepArchiveEnabled', 'ExpirationEnabled', 'BucketVersioningEnabled', 'LambdaEventNotifyConfigEnabled', 'HasNotificationPrefix', 'HasNotificationSuffix', 'HasNotificationFilters', 'HasVpcEndpointRestriction', 'HasWhitelistedUserId', 'HasWhitelistedRoleId', 'HasIAMRoleAccess']
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:618:17
+
+E3024 {'Fn::Not': [{'Fn::Equals': [{'Ref': 'CiBuild'}, '']}]} is not of type 'string'
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:618:17
+
+E1019 'AWS::Timestamp' is not one of ['ProjectName', 'Environment', 'GitHubOrg', 'GitHubRepo', 'CiBuild', 'KmsMasterKeyArn', 'S3BucketBaseName', 'BucketVersioningEnabled', 'BlockPublicAcls', 'BlockPublicPolicy', 'IgnorePublicAcls', 'RestrictPublicBuckets', 'S3VpcEndpointId', 'S3LifecycleConfigurationEnabled', 'TransitionPrefix', 'TransitionToStandardIAEnabled', 'TransitionToStandardIADays', 'TransitionToIntelligentTieringEnabled', 'TransitionToIntelligentTieringDays', 'TransitionToOneZoneIAEnabled', 'TransitionToOneZoneIADays', 'TransitionToGlacierIREnabled', 'TransitionToGlacierIRDays', 'TransitionToGlacierEnabled', 'TransitionToGlacierDays', 'TransitionToDeepArchiveEnabled', 'TransitionToDeepArchiveDays', 'EnableExpiration', 'ExpirationDays', 'LambdaFunctionArn', 'NotificationEvents', 'Prefix', 'Suffix', 'IAMRoleBaseName', 'WhitelistedUserId', 'WhitelistedRoleId', 'S3Bucket', 'S3BucketPolicy', 'AWS::AccountId', 'AWS::NoValue', 'AWS::NotificationARNs', 'AWS::Partition', 'AWS::Region', 'AWS::StackId', 'AWS::StackName', 'AWS::URLSuffix']
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:638:11
+
+E3024 'AWS::Timestamp' is not one of ['ProjectName', 'Environment', 'GitHubOrg', 'GitHubRepo', 'CiBuild', 'KmsMasterKeyArn', 'S3BucketBaseName', 'BucketVersioningEnabled', 'BlockPublicAcls', 'BlockPublicPolicy', 'IgnorePublicAcls', 'RestrictPublicBuckets', 'S3VpcEndpointId', 'S3LifecycleConfigurationEnabled', 'TransitionPrefix', 'TransitionToStandardIAEnabled', 'TransitionToStandardIADays', 'TransitionToIntelligentTieringEnabled', 'TransitionToIntelligentTieringDays', 'TransitionToOneZoneIAEnabled', 'TransitionToOneZoneIADays', 'TransitionToGlacierIREnabled', 'TransitionToGlacierIRDays', 'TransitionToGlacierEnabled', 'TransitionToGlacierDays', 'TransitionToDeepArchiveEnabled', 'TransitionToDeepArchiveDays', 'EnableExpiration', 'ExpirationDays', 'LambdaFunctionArn', 'NotificationEvents', 'Prefix', 'Suffix', 'IAMRoleBaseName', 'WhitelistedUserId', 'WhitelistedRoleId', 'S3Bucket', 'S3BucketPolicy', 'AWS::AccountId', 'AWS::NoValue', 'AWS::NotificationARNs', 'AWS::Partition', 'AWS::Region', 'AWS::StackId', 'AWS::StackName', 'AWS::URLSuffix']
+/Users/subhamaybhattacharyya/Projects/nested-stack-template/tests/validation/../../cfn/template.yaml:638:11
+

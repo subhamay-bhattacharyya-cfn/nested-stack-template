@@ -1,0 +1,328 @@
+# CloudFormation Template Integration Test Configuration
+# Defines test scenarios, expected outcomes, and validation criteria
+
+test_configuration:
+  template_path: "cfn/template.yaml"
+  results_directory: "tests/validation/results"
+  timeout_seconds: 300
+  
+  # AWS Configuration (for live tests)
+  aws_config:
+    region: "us-east-1"
+    stack_name_prefix: "integration-test"
+    cleanup_after_test: true
+    
+  # Test Scenarios
+  scenarios:
+    
+    # Scenario 1: Minimal Configuration
+    minimal_configuration:
+      name: "Minimal Configuration"
+      description: "Basic S3 bucket with minimal required parameters"
+      requirements: ["1.1"]
+      priority: "high"
+      parameters:
+        ProjectName: "integration-test"
+        Environment: "devl"
+        S3BucketBaseName: "minimal-bucket"
+      
+      expected_outcomes:
+        resources_created: ["S3Bucket", "S3BucketPolicy"]
+        bucket_features:
+          encryption: false
+          versioning: false
+          lifecycle_rules: 0
+          notification_configs: 0
+          public_access_blocked: true
+        
+        policy_statements:
+          https_enforcement: true
+          kms_enforcement: false
+          vpc_restriction: false
+          account_restriction: true
+        
+        tags:
+          required: ["Name", "Project", "Environment", "ManagedBy"]
+          optional: ["GitHubOrg", "GitHubRepo", "CiBuild"]
+        
+        outputs:
+          S3BucketArn: true
+    
+    # Scenario 2: KMS Encryption Enabled
+    kms_encryption:
+      name: "KMS Encryption Enabled"
+      description: "S3 bucket with KMS encryption and versioning"
+      requirements: ["1.1", "1.2", "1.3"]
+      priority: "high"
+      parameters:
+        ProjectName: "integration-test"
+        Environment: "prod"
+        S3BucketBaseName: "encrypted-bucket"
+        KmsMasterKeyArn: "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012"
+        BucketVersioningEnabled: "true"
+      
+      expected_outcomes:
+        resources_created: ["S3Bucket", "S3BucketPolicy"]
+        bucket_features:
+          encryption: true
+          encryption_type: "aws:kms"
+          versioning: true
+          lifecycle_rules: 0
+          notification_configs: 0
+        
+        policy_statements:
+          https_enforcement: true
+          kms_enforcement: true
+          vpc_restriction: false
+          account_restriction: true
+    
+    # Scenario 3: Full Lifecycle Configuration
+    full_lifecycle:
+      name: "Full Lifecycle Configuration"
+      description: "S3 bucket with comprehensive lifecycle management"
+      requirements: ["1.1", "2.1", "2.2", "2.3", "2.4", "2.5", "2.6"]
+      priority: "high"
+      parameters:
+        ProjectName: "integration-test"
+        Environment: "test"
+        S3BucketBaseName: "lifecycle-bucket"
+        S3LifecycleConfigurationEnabled: "true"
+        TransitionPrefix: "data/"
+        TransitionToStandardIAEnabled: "true"
+        TransitionToStandardIADays: 30
+        TransitionToIntelligentTieringEnabled: "true"
+        TransitionToIntelligentTieringDays: 60
+        TransitionToOneZoneIAEnabled: "true"
+        TransitionToOneZoneIADays: 90
+        TransitionToGlacierIREnabled: "true"
+        TransitionToGlacierIRDays: 120
+        TransitionToGlacierEnabled: "true"
+        TransitionToGlacierDays: 180
+        TransitionToDeepArchiveEnabled: "true"
+        TransitionToDeepArchiveDays: 365
+        EnableExpiration: "true"
+        ExpirationDays: 2555
+      
+      expected_outcomes:
+        bucket_features:
+          lifecycle_rules: 1
+          lifecycle_transitions: 6
+          expiration_enabled: true
+        
+        lifecycle_validation:
+          standard_ia_days: 30
+          intelligent_tiering_days: 60
+          onezone_ia_days: 90
+          glacier_ir_days: 120
+          glacier_days: 180
+          deep_archive_days: 365
+          expiration_days: 2555
+    
+    # Scenario 4: Lambda Event Notifications
+    lambda_notifications:
+      name: "Lambda Event Notifications"
+      description: "S3 bucket with Lambda event notifications and filtering"
+      requirements: ["1.1", "4.1", "4.2", "4.3"]
+      priority: "high"
+      parameters:
+        ProjectName: "integration-test"
+        Environment: "devl"
+        S3BucketBaseName: "notify-bucket"
+        LambdaFunctionArn: "arn:aws:lambda:us-east-1:123456789012:function:s3-processor"
+        NotificationEvents: ["s3:ObjectCreated:*", "s3:ObjectRemoved:*"]
+        Prefix: "uploads/"
+        Suffix: ".jpg"
+      
+      expected_outcomes:
+        bucket_features:
+          notification_configs: 1
+          notification_events: ["s3:ObjectCreated:*", "s3:ObjectRemoved:*"]
+          notification_filters:
+            prefix: "uploads/"
+            suffix: ".jpg"
+    
+    # Scenario 5: Security Configuration
+    security_configuration:
+      name: "Security Configuration"
+      description: "S3 bucket with comprehensive security policies and access controls"
+      requirements: ["1.1", "3.1", "3.2", "3.3", "3.4", "3.5"]
+      priority: "high"
+      parameters:
+        ProjectName: "integration-test"
+        Environment: "prod"
+        S3BucketBaseName: "secure-bucket"
+        S3VpcEndpointId: "vpce-12345678"
+        IAMRoleBaseName: "S3AccessRole"
+        WhitelistedUserId: "AIDACKCEVSQ6C2EXAMPLE"
+        WhitelistedRoleId: "AROACKCEVSQ6C2EXAMPLE"
+      
+      expected_outcomes:
+        policy_statements:
+          https_enforcement: true
+          vpc_restriction: true
+          account_restriction: true
+          whitelisted_user_access: true
+          whitelisted_role_access: true
+          iam_role_access: true
+        
+        security_features:
+          vpc_endpoint_id: "vpce-12345678"
+          whitelisted_user: "AIDACKCEVSQ6C2EXAMPLE"
+          whitelisted_role: "AROACKCEVSQ6C2EXAMPLE"
+          iam_role: "S3AccessRole"
+    
+    # Scenario 6: GitHub Integration
+    github_integration:
+      name: "GitHub Integration"
+      description: "S3 bucket with GitHub integration and CI/CD metadata"
+      requirements: ["1.1", "6.1", "6.3"]
+      priority: "medium"
+      parameters:
+        ProjectName: "integration-test"
+        Environment: "devl"
+        S3BucketBaseName: "github-bucket"
+        GitHubOrg: "my-organization"
+        GitHubRepo: "my-repository"
+        CiBuild: "build-12345"
+      
+      expected_outcomes:
+        tags:
+          github_org: "my-organization"
+          github_repo: "my-repository"
+          ci_build: "build-12345"
+        
+        bucket_naming:
+          includes_ci_build: true
+          pattern: "integration-test-github-bucket-devl-{region}-build-12345"
+    
+    # Scenario 7: Comprehensive Configuration
+    comprehensive:
+      name: "Comprehensive Configuration"
+      description: "S3 bucket with all features enabled for complete integration testing"
+      requirements: ["1.1", "1.2", "1.3", "1.4", "2.1", "2.2", "2.3", "2.4", "2.5", "2.6", 
+                    "3.1", "3.2", "3.3", "3.4", "3.5", "4.1", "4.2", "4.3", "6.1", "6.2", "6.3"]
+      priority: "critical"
+      parameters:
+        ProjectName: "integration-test"
+        Environment: "prod"
+        S3BucketBaseName: "comprehensive"
+        GitHubOrg: "my-organization"
+        GitHubRepo: "comprehensive-repo"
+        CiBuild: "build-67890"
+        KmsMasterKeyArn: "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012"
+        BucketVersioningEnabled: "true"
+        BlockPublicAcls: "true"
+        BlockPublicPolicy: "true"
+        IgnorePublicAcls: "true"
+        RestrictPublicBuckets: "true"
+        S3LifecycleConfigurationEnabled: "true"
+        TransitionPrefix: "data/"
+        TransitionToStandardIAEnabled: "true"
+        TransitionToStandardIADays: 30
+        TransitionToGlacierEnabled: "true"
+        TransitionToGlacierDays: 180
+        EnableExpiration: "true"
+        ExpirationDays: 2555
+        LambdaFunctionArn: "arn:aws:lambda:us-east-1:123456789012:function:comprehensive-processor"
+        NotificationEvents: ["s3:ObjectCreated:*"]
+        Prefix: "processed/"
+        S3VpcEndpointId: "vpce-87654321"
+        IAMRoleBaseName: "ComprehensiveS3Role"
+      
+      expected_outcomes:
+        bucket_features:
+          encryption: true
+          versioning: true
+          lifecycle_rules: 1
+          notification_configs: 1
+          public_access_blocked: true
+        
+        policy_statements:
+          https_enforcement: true
+          kms_enforcement: true
+          vpc_restriction: true
+          account_restriction: true
+          iam_role_access: true
+        
+        integration_validation:
+          all_features_enabled: true
+          no_conflicts: true
+          performance_acceptable: true
+
+# Validation Rules
+validation_rules:
+  
+  # Template Structure Validation
+  template_structure:
+    required_sections: ["AWSTemplateFormatVersion", "Description", "Parameters", "Resources"]
+    optional_sections: ["Metadata", "Conditions", "Outputs"]
+    max_template_size_bytes: 460800  # 450KB CloudFormation limit
+  
+  # Parameter Validation Rules
+  parameters:
+    ProjectName:
+      pattern: "^[a-z0-9-]+$"
+      min_length: 5
+      max_length: 30
+    
+    Environment:
+      allowed_values: ["devl", "test", "prod"]
+    
+    S3BucketBaseName:
+      pattern: "^[a-z0-9.-]{3,20}$"
+      min_length: 3
+      max_length: 20
+    
+    KmsMasterKeyArn:
+      pattern: "^$|^arn:(aws[a-zA-Z-]*)?:kms:[a-z0-9-]+:\\d{12}:key/[a-f0-9-]{36}$"
+      optional: true
+    
+    LambdaFunctionArn:
+      pattern: "^$|^arn:(aws[a-zA-Z-]*)?:lambda:[a-z0-9-]+:\\d{12}:function:[a-zA-Z0-9-_]+(:($LATEST|[a-zA-Z0-9-_]+))?$"
+      optional: true
+  
+  # Resource Validation Rules
+  resources:
+    S3Bucket:
+      required: true
+      type: "AWS::S3::Bucket"
+      required_properties: ["BucketName", "PublicAccessBlockConfiguration", "Tags"]
+    
+    S3BucketPolicy:
+      required: true
+      type: "AWS::S3::BucketPolicy"
+      required_properties: ["Bucket", "PolicyDocument"]
+  
+  # Security Validation Rules
+  security:
+    https_enforcement: true
+    public_access_blocked: true
+    account_restriction: true
+    encryption_at_rest: "conditional"  # Based on KMS parameter
+    
+  # Performance Validation Rules
+  performance:
+    max_lifecycle_rules: 10
+    max_notification_configs: 5
+    max_policy_statements: 20
+
+# Test Execution Settings
+execution_settings:
+  parallel_execution: false
+  continue_on_failure: true
+  generate_detailed_logs: true
+  save_generated_templates: true
+  
+  # Timeouts
+  template_validation_timeout: 30
+  parameter_validation_timeout: 60
+  integration_test_timeout: 300
+  
+  # Retry Settings
+  max_retries: 3
+  retry_delay_seconds: 5
+  
+  # Output Settings
+  verbose_output: true
+  save_intermediate_results: true
+  generate_summary_report: true
