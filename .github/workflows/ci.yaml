@@ -31,7 +31,7 @@ permissions:
 jobs:
   cloudformation-ci:
     name: CI
-    uses: subhamay-bhattacharyya-cfn/cfn-ci-reusable-wf/.github/workflows/ci.yaml@feature/GHA-0001-initial-release
+    uses: subhamay-bhattacharyya-gha/cfn-ci-reusable-wf/.github/workflows/ci.yaml@feature/GHA-0001-initial-release
     with:
       environment: "ci"
       cfn-directory: "cfn"
